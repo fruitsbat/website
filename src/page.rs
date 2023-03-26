@@ -38,6 +38,7 @@ impl Render for Page {
         html! {
             (DOCTYPE)
             title {(self.title)}
+            link rel="stylesheet" href="/index.css" {}
             html lang=("en") {
                 body {
                     (YouAreHere {path: self.path.clone()})
