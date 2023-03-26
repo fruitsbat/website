@@ -9,3 +9,4 @@ edition = "2021"
 strum = { version = "0.24.1", features = ["derive"] }
 maud = "0.24.0"
 grass = { version = "0.12.3", features = ["include_sass", "macro"] }
+bytes = "1.4.0"

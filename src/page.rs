@@ -1,4 +1,5 @@
 use crate::components::footer::Footer;
+use bytes::Bytes;
 use maud::{html, Markup, Render, DOCTYPE};
 use strum::EnumIter;
 
@@ -37,13 +38,16 @@ impl Render for Page {
     fn render(&self) -> Markup {
         html! {
             (DOCTYPE)
+            meta charset="UTF8" {}
             title {(self.title)}
             link rel="stylesheet" href="/index.css" {}
             html lang=("en") {
                 body {
-                    h1 {(self.title)}
-                    (YouAreHere {path: self.path.clone()})
-                    div #content {(self.content.clone())}
+                    div #content {
+                        h1 {(self.title)}
+                        (YouAreHere {path: self.path.clone()})
+                        (self.content.clone())
+                    }
                 }
                 (Footer {active: self.category})
             }
@@ -69,8 +73,10 @@ impl Render for YouAreHere {
             });
         }
         html! {
-            @for link in links.iter() {
-                (link)
+            div {
+                @for link in links.iter() {
+                    (link)
+                }
             }
         }
     }
@@ -80,7 +86,7 @@ impl crate::files::Writable for Page {
     fn path(&self) -> String {
         format!("{}/index.html", self.path.concat())
     }
-    fn filecontents(&self) -> String {
-        html! {(&self)}.into_string()
+    fn filecontents(&self) -> Bytes {
+        Bytes::copy_from_slice(html! {(self)}.into_string().as_bytes())
     }
 }

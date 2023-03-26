@@ -1,0 +1,13 @@
+:root {
+  --background-color: #303446;
+  --foreground-color: #c6d0f5;
+  --green: #a6d189;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background-color: #eff1f5;
+    --foreground-color: #4c4f69;
+    --green: #40a02b;
+  }
+}
