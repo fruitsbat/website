@@ -27,9 +27,9 @@ struct Navlink {
 impl Render for Navlink {
     fn render(&self) -> Markup {
         let class = if self.active == self.category {
-            "active"
+            "active footer-button"
         } else {
-            "inactive"
+            "inactive footer-button"
         };
         html! {
             a

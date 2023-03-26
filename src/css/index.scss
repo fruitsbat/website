@@ -3,3 +3,40 @@
   margin: 0;
   color: black;
 }
+
+a {
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a.active::before {
+  content: ">";
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  justify-content: space-evenly;
+}
+
+.footer-button {
+  display: flex;
+}
+
+body {
+  min-height: 100%;
+}
+
+#content {
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}

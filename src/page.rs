@@ -14,7 +14,7 @@ impl Category {
         match &self {
             Category::Home => "home",
             Category::Blog => "blog",
-            Category::Links => "links",
+            Category::Links => "more cyberspace",
         }
     }
     pub fn link(&self) -> &'static str {
@@ -41,8 +41,8 @@ impl Render for Page {
             link rel="stylesheet" href="/index.css" {}
             html lang=("en") {
                 body {
-                    (YouAreHere {path: self.path.clone()})
                     h1 {(self.title)}
+                    (YouAreHere {path: self.path.clone()})
                     div #content {(self.content.clone())}
                 }
                 (Footer {active: self.category})
