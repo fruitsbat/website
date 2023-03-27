@@ -1,16 +1,27 @@
 @import "./colors.scss";
 @import "./vars.scss";
 @import "./font.scss";
+@import "./linkbox.scss";
+@import "./tag.scss";
 
 * {
   padding: 0;
   margin: 0;
   color: var(--foreground-color);
   font-family: "atkinson";
+  text-decoration-thickness: var(--border-width);
+  line-height: 2;
+  box-sizing: inherit;
+}
+
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 a {
   text-decoration: underline;
+  text-decoration-color: var(--cyan);
 }
 
 a:hover {
@@ -18,9 +29,14 @@ a:hover {
   text-decoration-color: var(--green);
 }
 
-a.active::before {
+a.active:hover::before {
   content: ">";
   color: var(--green);
+}
+
+a.active::before {
+  content: ">";
+  color: var(--cyan);
 }
 
 footer {
@@ -30,7 +46,7 @@ footer {
   bottom: 0;
   left: 0;
   justify-content: space-evenly;
-  border-top: var(--border-width) solid var(--green);
+  border-top: var(--border-width) solid var(--cyan);
   background: var(--background-color);
 }
 
@@ -49,17 +65,15 @@ body {
 #content {
   justify-content: center;
   padding: var(--padding-size);
-}
-
-#content * {
-  display: flex;
+  gap: var(--padding-size);
 }
 
 html {
   height: 100%;
+  box-sizing: border-box;
 }
 
 h1::before {
   content: ">";
-  color: var(--green);
+  color: var(--cyan);
 }

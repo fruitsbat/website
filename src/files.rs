@@ -35,6 +35,7 @@ pub fn write_data<W: Writable + ?Sized>(pages: &Vec<Box<W>>) -> Result<(), Box<d
     Ok(())
 }
 
+#[derive(Clone, Copy)]
 pub enum AssetType {
     Font,
     Image,
@@ -44,26 +45,24 @@ pub enum AssetType {
 impl AssetType {
     pub fn folder(&self) -> &'static str {
         match &self {
-            AssetType::Font => "fonts",
-            AssetType::Image => "images",
-            AssetType::Video => "videos",
+            AssetType::Font => "fonts/",
+            AssetType::Image => "images/",
+            AssetType::Video => "videos/",
         }
     }
 }
 
+#[derive(Clone)]
 pub struct Asset {
     pub path: Vec<&'static str>,
     pub content: &'static [u8],
     pub asset_type: AssetType,
+    pub alt: &'static str,
 }
 
 impl Writable for Asset {
     fn path(&self) -> String {
-        format!(
-            "assets/{}/{}",
-            self.asset_type.folder(),
-            &self.path.concat()
-        )
+        format!("assets/{}{}", self.asset_type.folder(), &self.path.concat())
     }
     fn filecontents(&self) -> Bytes {
         Bytes::from_static(self.content)

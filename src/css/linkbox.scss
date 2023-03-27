@@ -1,0 +1,26 @@
+.linkbox {
+  display: grid;
+  border: var(--border-width) solid var(--cyan);
+  padding: var(--padding-size);
+  legend {
+    border: var(--border-width) solid var(--cyan);
+    align-self: right;
+    margin-left: var(--padding-size);
+    margin-right: calc(var(--padding-size) * 2);
+    padding: var(--padding-size);
+  }
+}
+
+.linkbox-container {
+  display: grid;
+  gap: var(--padding-size);
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  grid-template-rows: masonry;
+}
+
+.linkbox-container img {
+  width: 100%;
+  object-fit: contain;
+  border: var(--border-width) solid var(--cyan);
+  padding: var(--padding-size);
+}

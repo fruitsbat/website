@@ -28,7 +28,7 @@ impl Category {
 }
 
 pub struct Page {
-    pub content: String,
+    pub content: Markup,
     pub category: Category,
     pub path: Vec<&'static str>,
     pub title: &'static str,
@@ -38,14 +38,20 @@ impl Render for Page {
     fn render(&self) -> Markup {
         html! {
             (DOCTYPE)
+            meta
+            name="viewport"
+            content="width=device-width"
+            initial-scale="1.0" {}
             meta charset="UTF8" {}
             title {(self.title)}
             link rel="stylesheet" href="/index.css" {}
             html lang=("en") {
                 body {
                     div #content {
-                        h1 {(self.title)}
-                        (YouAreHere {path: self.path.clone()})
+                        div class="title" {
+                            (YouAreHere {path: self.path.clone()})
+                            h1 {(self.title)}
+                        }
                         (self.content.clone())
                     }
                 }

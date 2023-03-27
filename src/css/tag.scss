@@ -1,0 +1,17 @@
+.tag {
+  color: var(--background-color);
+  background: var(--cyan);
+  border-radius: 1em;
+  padding: calc(var(--padding-size) / 2);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.tag:hover {
+  background: var(--green);
+}
+
+.tag-list {
+  display: flex;
+  gap: var(--padding-size);
+}
