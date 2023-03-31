@@ -1,0 +1,2 @@
+2023-03-31 16:56:30.781 UTC [100146] LOG:  redirecting log output to logging collector process
+2023-03-31 16:56:30.781 UTC [100146] HINT:  Future log output will appear in directory "logs".

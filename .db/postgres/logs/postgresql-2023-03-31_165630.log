@@ -1,0 +1,445 @@
+2023-03-31 16:56:30.782 UTC [100146] LOG:  starting PostgreSQL 14.7 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 11.3.0, 64-bit
+2023-03-31 16:56:30.783 UTC [100146] LOG:  listening on IPv6 address "::1", port 5432
+2023-03-31 16:56:30.783 UTC [100146] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2023-03-31 16:56:30.789 UTC [100146] LOG:  listening on Unix socket "/home/zoe/Documents/Code/website/.db/postgres-sockets/.s.PGSQL.5432"
+2023-03-31 16:56:30.799 UTC [100148] LOG:  database system was shut down at 2023-03-31 16:56:30 UTC
+2023-03-31 16:56:30.814 UTC [100146] LOG:  database system is ready to accept connections
+2023-03-31 16:56:30.911 UTC [100156] LOG:  connection received: host=::1 port=38158
+2023-03-31 16:56:30.922 UTC [100156] LOG:  connection authorized: user=postgres database=postgres application_name=psql
+2023-03-31 16:56:30.938 UTC [100156] LOG:  statement: CREATE DATABASE intract
+2023-03-31 16:56:31.131 UTC [100156] LOG:  duration: 193.661 ms
+2023-03-31 16:56:31.132 UTC [100156] LOG:  disconnection: session time: 0:00:00.221 user=postgres database=postgres host=::1 port=38158
+2023-03-31 17:02:26.929 UTC [101077] LOG:  connection received: host=::1 port=56960
+2023-03-31 17:02:26.936 UTC [101077] LOG:  connection authorized: user=postgres database=postgres application_name=psql
+2023-03-31 17:03:37.189 UTC [101077] LOG:  disconnection: session time: 0:01:10.261 user=postgres database=postgres host=::1 port=56960
+2023-03-31 17:18:33.640 UTC [102380] LOG:  connection received: host=::1 port=55574
+2023-03-31 17:18:33.642 UTC [102380] LOG:  connection authorized: user=postgres database=postgres application_name=psql
+2023-03-31 17:18:52.517 UTC [102380] LOG:  disconnection: session time: 0:00:18.877 user=postgres database=postgres host=::1 port=55574
+2023-03-31 17:19:18.935 UTC [102447] LOG:  connection received: host=::1 port=49094
+2023-03-31 17:19:18.938 UTC [102447] LOG:  connection authorized: user=postgres database=postgres application_name=createuser
+2023-03-31 17:19:18.941 UTC [102447] LOG:  statement: SELECT pg_catalog.set_config('search_path', '', false);
+2023-03-31 17:19:18.954 UTC [102447] LOG:  duration: 13.216 ms
+2023-03-31 17:19:18.954 UTC [102447] LOG:  statement: show password_encryption
+2023-03-31 17:19:18.954 UTC [102447] LOG:  duration: 0.152 ms
+2023-03-31 17:19:18.987 UTC [102447] LOG:  statement: CREATE ROLE website PASSWORD 'SCRAM-SHA-256$4096:ftByGn9aAecIdmiTGSxskg==$eSAtvbvAZmFt0K8oTHfuQKkhTRmIVHAyks87m19rwIs=:FIM6jRbqap/bENfeAhU2kJFiINO1srCmaYo0V6K4slY=' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;
+2023-03-31 17:19:19.017 UTC [102447] LOG:  duration: 29.645 ms
+2023-03-31 17:19:19.017 UTC [102447] LOG:  disconnection: session time: 0:00:00.083 user=postgres database=postgres host=::1 port=49094
+2023-03-31 17:19:33.565 UTC [102495] LOG:  connection received: host=::1 port=49768
+2023-03-31 17:19:33.568 UTC [102495] LOG:  connection authorized: user=postgres database=postgres application_name=createdb
+2023-03-31 17:19:33.571 UTC [102495] LOG:  statement: SELECT pg_catalog.set_config('search_path', '', false);
+2023-03-31 17:19:33.572 UTC [102495] LOG:  duration: 1.003 ms
+2023-03-31 17:19:33.573 UTC [102495] LOG:  statement: CREATE DATABASE database OWNER website;
+2023-03-31 17:19:33.878 UTC [102495] LOG:  duration: 305.625 ms
+2023-03-31 17:19:33.879 UTC [102495] LOG:  disconnection: session time: 0:00:00.315 user=postgres database=postgres host=::1 port=49768
+2023-03-31 17:21:31.038 UTC [102683] LOG:  connection received: host=::1 port=51734
+2023-03-31 17:21:31.040 UTC [102683] LOG:  connection authorized: user=website database=diesel_demo
+2023-03-31 17:21:31.040 UTC [102683] FATAL:  database "diesel_demo" does not exist
+2023-03-31 17:21:31.044 UTC [102684] LOG:  connection received: host=::1 port=51748
+2023-03-31 17:21:31.047 UTC [102684] LOG:  connection authorized: user=website database=postgres
+2023-03-31 17:21:31.051 UTC [102684] LOG:  duration: 1.189 ms
+2023-03-31 17:21:31.051 UTC [102684] LOG:  duration: 0.022 ms
+2023-03-31 17:21:31.052 UTC [102684] LOG:  execute <unnamed>: SET TIME ZONE 'UTC'
+2023-03-31 17:21:31.052 UTC [102684] LOG:  duration: 0.108 ms
+2023-03-31 17:21:31.052 UTC [102684] LOG:  duration: 0.057 ms
+2023-03-31 17:21:31.053 UTC [102684] LOG:  duration: 0.026 ms
+2023-03-31 17:21:31.053 UTC [102684] LOG:  execute <unnamed>: SET CLIENT_ENCODING TO 'UTF8'
+2023-03-31 17:21:31.053 UTC [102684] LOG:  duration: 0.062 ms
+2023-03-31 17:21:31.053 UTC [102684] LOG:  duration: 0.057 ms
+2023-03-31 17:21:31.054 UTC [102684] LOG:  duration: 0.022 ms
+2023-03-31 17:21:31.054 UTC [102684] LOG:  execute __diesel_stmt_0: CREATE DATABASE "diesel_demo"
+2023-03-31 17:21:31.055 UTC [102684] ERROR:  permission denied to create database
+2023-03-31 17:21:31.055 UTC [102684] STATEMENT:  CREATE DATABASE "diesel_demo"
+2023-03-31 17:21:31.055 UTC [102684] LOG:  disconnection: session time: 0:00:00.011 user=website database=postgres host=::1 port=51748
+2023-03-31 17:23:26.305 UTC [103037] LOG:  connection received: host=::1 port=49732
+2023-03-31 17:23:26.308 UTC [103037] LOG:  connection authorized: user=website database=database
+2023-03-31 17:23:26.320 UTC [103037] LOG:  duration: 0.582 ms
+2023-03-31 17:23:26.321 UTC [103037] LOG:  duration: 0.019 ms
+2023-03-31 17:23:26.321 UTC [103037] LOG:  execute <unnamed>: SET TIME ZONE 'UTC'
+2023-03-31 17:23:26.321 UTC [103037] LOG:  duration: 0.077 ms
+2023-03-31 17:23:26.321 UTC [103037] LOG:  duration: 0.052 ms
+2023-03-31 17:23:26.321 UTC [103037] LOG:  duration: 0.017 ms
+2023-03-31 17:23:26.321 UTC [103037] LOG:  execute <unnamed>: SET CLIENT_ENCODING TO 'UTF8'
+2023-03-31 17:23:26.321 UTC [103037] LOG:  duration: 0.028 ms
+2023-03-31 17:23:26.322 UTC [103037] LOG:  disconnection: session time: 0:00:00.017 user=website database=database host=::1 port=49732
+2023-03-31 17:23:26.325 UTC [103038] LOG:  connection received: host=::1 port=49740
+2023-03-31 17:23:26.327 UTC [103038] LOG:  connection authorized: user=website database=database
+2023-03-31 17:23:26.331 UTC [103038] LOG:  duration: 0.358 ms
+2023-03-31 17:23:26.331 UTC [103038] LOG:  duration: 0.023 ms
+2023-03-31 17:23:26.331 UTC [103038] LOG:  execute <unnamed>: SET TIME ZONE 'UTC'
+2023-03-31 17:23:26.331 UTC [103038] LOG:  duration: 0.108 ms
+2023-03-31 17:23:26.332 UTC [103038] LOG:  duration: 0.057 ms
+2023-03-31 17:23:26.332 UTC [103038] LOG:  duration: 0.021 ms
+2023-03-31 17:23:26.332 UTC [103038] LOG:  execute <unnamed>: SET CLIENT_ENCODING TO 'UTF8'
+2023-03-31 17:23:26.332 UTC [103038] LOG:  duration: 0.051 ms
+2023-03-31 17:23:26.337 UTC [103038] LOG:  duration: 3.986 ms
+2023-03-31 17:23:26.344 UTC [103038] LOG:  duration: 6.979 ms
+2023-03-31 17:23:26.345 UTC [103038] LOG:  execute <unnamed>: SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = '__diesel_schema_migrations')
+2023-03-31 17:23:26.345 UTC [103038] LOG:  duration: 0.130 ms
+2023-03-31 17:23:26.345 UTC [103038] LOG:  disconnection: session time: 0:00:00.021 user=website database=database host=::1 port=49740
+2023-03-31 17:23:26.348 UTC [103039] LOG:  connection received: host=::1 port=49748
+2023-03-31 17:23:26.350 UTC [103039] LOG:  connection authorized: user=website database=database
+2023-03-31 17:23:26.354 UTC [103039] LOG:  duration: 0.355 ms
+2023-03-31 17:23:26.354 UTC [103039] LOG:  duration: 0.021 ms
+2023-03-31 17:23:26.354 UTC [103039] LOG:  execute <unnamed>: SET TIME ZONE 'UTC'
+2023-03-31 17:23:26.354 UTC [103039] LOG:  duration: 0.088 ms
+2023-03-31 17:23:26.355 UTC [103039] LOG:  duration: 0.054 ms
+2023-03-31 17:23:26.355 UTC [103039] LOG:  duration: 0.018 ms
+2023-03-31 17:23:26.355 UTC [103039] LOG:  execute <unnamed>: SET CLIENT_ENCODING TO 'UTF8'
+2023-03-31 17:23:26.355 UTC [103039] LOG:  duration: 0.031 ms
+2023-03-31 17:23:26.355 UTC [103039] LOG:  duration: 0.111 ms
+2023-03-31 17:23:26.356 UTC [103039] LOG:  duration: 0.031 ms
+2023-03-31 17:23:26.356 UTC [103039] LOG:  execute <unnamed>: CREATE TABLE IF NOT EXISTS __diesel_schema_migrations (
+	       version VARCHAR(50) PRIMARY KEY NOT NULL,
+	       run_on TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+	);
+	
+2023-03-31 17:23:26.367 UTC [103039] LOG:  duration: 11.572 ms
+2023-03-31 17:23:26.371 UTC [103039] LOG:  duration: 0.505 ms
+2023-03-31 17:23:26.372 UTC [103039] LOG:  duration: 0.897 ms
+2023-03-31 17:23:26.372 UTC [103039] LOG:  execute __diesel_stmt_0: SELECT "__diesel_schema_migrations"."version" FROM "__diesel_schema_migrations" ORDER BY "__diesel_schema_migrations"."version" DESC 
+2023-03-31 17:23:26.372 UTC [103039] LOG:  duration: 0.058 ms
+2023-03-31 17:23:26.373 UTC [103039] LOG:  statement: BEGIN
+2023-03-31 17:23:26.373 UTC [103039] LOG:  duration: 0.091 ms
+2023-03-31 17:23:26.374 UTC [103039] LOG:  statement: -- This file was automatically created by Diesel to setup helper functions
+	-- and other internal bookkeeping. This file is safe to edit, any future
+	-- changes will be added to existing projects as new migrations.
+	
+	
+	
+	
+	-- Sets up a trigger for the given table to automatically set a column called
+	-- `updated_at` whenever the row is modified (unless `updated_at` was included
+	-- in the modified columns)
+	--
+	-- # Example
+	--
+	-- ```sql
+	-- CREATE TABLE users (id SERIAL PRIMARY KEY, updated_at TIMESTAMP NOT NULL DEFAULT NOW());
+	--
+	-- SELECT diesel_manage_updated_at('users');
+	-- ```
+	CREATE OR REPLACE FUNCTION diesel_manage_updated_at(_tbl regclass) RETURNS VOID AS $$
+	BEGIN
+	    EXECUTE format('CREATE TRIGGER set_updated_at BEFORE UPDATE ON %s
+	                    FOR EACH ROW EXECUTE PROCEDURE diesel_set_updated_at()', _tbl);
+	END;
+	$$ LANGUAGE plpgsql;
+	
+	CREATE OR REPLACE FUNCTION diesel_set_updated_at() RETURNS trigger AS $$
+	BEGIN
+	    IF (
+	        NEW IS DISTINCT FROM OLD AND
+	        NEW.updated_at IS NOT DISTINCT FROM OLD.updated_at
+	    ) THEN
+	        NEW.updated_at := current_timestamp;
+	    END IF;
+	    RETURN NEW;
+	END;
+	$$ LANGUAGE plpgsql;
+	
+2023-03-31 17:23:26.378 UTC [103039] LOG:  duration: 4.926 ms
+2023-03-31 17:23:26.379 UTC [103039] LOG:  duration: 0.147 ms
+2023-03-31 17:23:26.379 UTC [103039] LOG:  duration: 0.089 ms
+2023-03-31 17:23:26.379 UTC [103039] LOG:  execute __diesel_stmt_1: INSERT INTO "__diesel_schema_migrations" ("version") VALUES ($1)
+2023-03-31 17:23:26.379 UTC [103039] DETAIL:  parameters: $1 = '00000000000000'
+2023-03-31 17:23:26.380 UTC [103039] LOG:  duration: 0.411 ms
+2023-03-31 17:23:26.380 UTC [103039] LOG:  statement: COMMIT
+2023-03-31 17:23:26.381 UTC [103039] LOG:  duration: 1.117 ms
+2023-03-31 17:23:26.382 UTC [103039] LOG:  disconnection: session time: 0:00:00.034 user=website database=database host=::1 port=49748
+2023-03-31 17:24:28.776 UTC [108026] LOG:  connection received: host=::1 port=54748
+2023-03-31 17:24:28.779 UTC [108026] LOG:  connection authorized: user=website database=database
+2023-03-31 17:24:28.783 UTC [108026] LOG:  duration: 0.452 ms
+2023-03-31 17:24:28.784 UTC [108026] LOG:  duration: 0.023 ms
+2023-03-31 17:24:28.784 UTC [108026] LOG:  execute <unnamed>: SET TIME ZONE 'UTC'
+2023-03-31 17:24:28.784 UTC [108026] LOG:  duration: 0.094 ms
+2023-03-31 17:24:28.784 UTC [108026] LOG:  duration: 0.062 ms
+2023-03-31 17:24:28.785 UTC [108026] LOG:  duration: 0.020 ms
+2023-03-31 17:24:28.785 UTC [108026] LOG:  execute <unnamed>: SET CLIENT_ENCODING TO 'UTF8'
+2023-03-31 17:24:28.785 UTC [108026] LOG:  duration: 0.034 ms
+2023-03-31 17:24:28.785 UTC [108026] LOG:  disconnection: session time: 0:00:00.010 user=website database=database host=::1 port=54748
+2023-03-31 17:24:28.788 UTC [108027] LOG:  connection received: host=::1 port=54762
+2023-03-31 17:24:28.791 UTC [108027] LOG:  connection authorized: user=website database=database
+2023-03-31 17:24:28.795 UTC [108027] LOG:  duration: 0.391 ms
+2023-03-31 17:24:28.795 UTC [108027] LOG:  duration: 0.029 ms
+2023-03-31 17:24:28.795 UTC [108027] LOG:  execute <unnamed>: SET TIME ZONE 'UTC'
+2023-03-31 17:24:28.795 UTC [108027] LOG:  duration: 0.080 ms
+2023-03-31 17:24:28.796 UTC [108027] LOG:  duration: 0.062 ms
+2023-03-31 17:24:28.796 UTC [108027] LOG:  duration: 0.018 ms
+2023-03-31 17:24:28.796 UTC [108027] LOG:  execute <unnamed>: SET CLIENT_ENCODING TO 'UTF8'
+2023-03-31 17:24:28.796 UTC [108027] LOG:  duration: 0.072 ms
+2023-03-31 17:24:28.800 UTC [108027] LOG:  duration: 2.998 ms
+2023-03-31 17:24:28.804 UTC [108027] LOG:  duration: 4.548 ms
+2023-03-31 17:24:28.805 UTC [108027] LOG:  execute <unnamed>: SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = '__diesel_schema_migrations')
+2023-03-31 17:24:28.805 UTC [108027] LOG:  duration: 0.104 ms
+2023-03-31 17:24:28.805 UTC [108027] LOG:  disconnection: session time: 0:00:00.017 user=website database=database host=::1 port=54762
+2023-03-31 17:27:05.938 UTC [111859] LOG:  connection received: host=::1 port=58414
+2023-03-31 17:27:05.941 UTC [111859] LOG:  connection authorized: user=website database=database
+2023-03-31 17:27:05.944 UTC [111859] LOG:  duration: 0.432 ms
+2023-03-31 17:27:05.945 UTC [111859] LOG:  duration: 0.021 ms
+2023-03-31 17:27:05.945 UTC [111859] LOG:  execute <unnamed>: SET TIME ZONE 'UTC'
+2023-03-31 17:27:05.945 UTC [111859] LOG:  duration: 0.112 ms
+2023-03-31 17:27:05.945 UTC [111859] LOG:  duration: 0.058 ms
+2023-03-31 17:27:05.946 UTC [111859] LOG:  duration: 0.019 ms
+2023-03-31 17:27:05.946 UTC [111859] LOG:  execute <unnamed>: SET CLIENT_ENCODING TO 'UTF8'
+2023-03-31 17:27:05.946 UTC [111859] LOG:  duration: 0.050 ms
+2023-03-31 17:27:05.946 UTC [111859] LOG:  disconnection: session time: 0:00:00.008 user=website database=database host=::1 port=58414
+2023-03-31 17:27:05.950 UTC [111860] LOG:  connection received: host=::1 port=58418
+2023-03-31 17:27:05.952 UTC [111860] LOG:  connection authorized: user=website database=database
+2023-03-31 17:27:05.955 UTC [111860] LOG:  duration: 0.378 ms
+2023-03-31 17:27:05.956 UTC [111860] LOG:  duration: 0.021 ms
+2023-03-31 17:27:05.956 UTC [111860] LOG:  execute <unnamed>: SET TIME ZONE 'UTC'
+2023-03-31 17:27:05.956 UTC [111860] LOG:  duration: 0.076 ms
+2023-03-31 17:27:05.956 UTC [111860] LOG:  duration: 0.077 ms
+2023-03-31 17:27:05.956 UTC [111860] LOG:  duration: 0.018 ms
+2023-03-31 17:27:05.957 UTC [111860] LOG:  execute <unnamed>: SET CLIENT_ENCODING TO 'UTF8'
+2023-03-31 17:27:05.957 UTC [111860] LOG:  duration: 0.032 ms
+2023-03-31 17:27:05.959 UTC [111860] LOG:  duration: 2.564 ms
+2023-03-31 17:27:05.964 UTC [111860] LOG:  duration: 4.444 ms
+2023-03-31 17:27:05.964 UTC [111860] LOG:  execute <unnamed>: SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = '__diesel_schema_migrations')
+2023-03-31 17:27:05.964 UTC [111860] LOG:  duration: 0.105 ms
+2023-03-31 17:27:05.965 UTC [111860] LOG:  disconnection: session time: 0:00:00.016 user=website database=database host=::1 port=58418
+2023-03-31 17:32:03.993 UTC [112407] LOG:  connection received: host=::1 port=46168
+2023-03-31 17:32:03.996 UTC [112407] LOG:  connection authorized: user=website database=database
+2023-03-31 17:32:04.000 UTC [112407] LOG:  duration: 0.433 ms
+2023-03-31 17:32:04.000 UTC [112407] LOG:  duration: 0.023 ms
+2023-03-31 17:32:04.000 UTC [112407] LOG:  execute <unnamed>: SET TIME ZONE 'UTC'
+2023-03-31 17:32:04.000 UTC [112407] LOG:  duration: 0.087 ms
+2023-03-31 17:32:04.001 UTC [112407] LOG:  duration: 0.061 ms
+2023-03-31 17:32:04.001 UTC [112407] LOG:  duration: 0.023 ms
+2023-03-31 17:32:04.001 UTC [112407] LOG:  execute <unnamed>: SET CLIENT_ENCODING TO 'UTF8'
+2023-03-31 17:32:04.001 UTC [112407] LOG:  duration: 0.036 ms
+2023-03-31 17:32:04.002 UTC [112407] LOG:  disconnection: session time: 0:00:00.009 user=website database=database host=::1 port=46168
+2023-03-31 17:32:04.005 UTC [112408] LOG:  connection received: host=::1 port=46184
+2023-03-31 17:32:04.008 UTC [112408] LOG:  connection authorized: user=website database=database
+2023-03-31 17:32:04.012 UTC [112408] LOG:  duration: 0.394 ms
+2023-03-31 17:32:04.012 UTC [112408] LOG:  duration: 0.024 ms
+2023-03-31 17:32:04.012 UTC [112408] LOG:  execute <unnamed>: SET TIME ZONE 'UTC'
+2023-03-31 17:32:04.013 UTC [112408] LOG:  duration: 0.086 ms
+2023-03-31 17:32:04.013 UTC [112408] LOG:  duration: 0.062 ms
+2023-03-31 17:32:04.013 UTC [112408] LOG:  duration: 0.022 ms
+2023-03-31 17:32:04.013 UTC [112408] LOG:  execute <unnamed>: SET CLIENT_ENCODING TO 'UTF8'
+2023-03-31 17:32:04.013 UTC [112408] LOG:  duration: 0.036 ms
+2023-03-31 17:32:04.017 UTC [112408] LOG:  duration: 2.863 ms
+2023-03-31 17:32:04.022 UTC [112408] LOG:  duration: 4.970 ms
+2023-03-31 17:32:04.022 UTC [112408] LOG:  execute <unnamed>: SELECT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = '__diesel_schema_migrations')
+2023-03-31 17:32:04.022 UTC [112408] LOG:  duration: 0.121 ms
+2023-03-31 17:32:04.023 UTC [112408] LOG:  disconnection: session time: 0:00:00.018 user=website database=database host=::1 port=46184
+2023-03-31 17:36:50.688 UTC [112917] LOG:  connection received: host=::1 port=43132
+2023-03-31 17:36:50.691 UTC [112917] LOG:  connection authorized: user=website database=database
+2023-03-31 17:36:50.694 UTC [112917] LOG:  duration: 0.402 ms
+2023-03-31 17:36:50.695 UTC [112917] LOG:  duration: 0.021 ms
+2023-03-31 17:36:50.695 UTC [112917] LOG:  execute <unnamed>: SET TIME ZONE 'UTC'
+2023-03-31 17:36:50.695 UTC [112917] LOG:  duration: 0.078 ms
+2023-03-31 17:36:50.695 UTC [112917] LOG:  duration: 0.054 ms
+2023-03-31 17:36:50.695 UTC [112917] LOG:  duration: 0.019 ms
+2023-03-31 17:36:50.695 UTC [112917] LOG:  execute <unnamed>: SET CLIENT_ENCODING TO 'UTF8'
+2023-03-31 17:36:50.695 UTC [112917] LOG:  duration: 0.031 ms
+2023-03-31 17:36:50.696 UTC [112917] LOG:  duration: 0.114 ms
+2023-03-31 17:36:50.696 UTC [112917] LOG:  duration: 0.028 ms
+2023-03-31 17:36:50.696 UTC [112917] LOG:  execute <unnamed>: CREATE TABLE IF NOT EXISTS __diesel_schema_migrations (
+	       version VARCHAR(50) PRIMARY KEY NOT NULL,
+	       run_on TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+	);
+	
+2023-03-31 17:36:50.696 UTC [112917] LOG:  duration: 0.309 ms
+2023-03-31 17:36:50.698 UTC [112917] LOG:  duration: 1.196 ms
+2023-03-31 17:36:50.699 UTC [112917] LOG:  duration: 0.923 ms
+2023-03-31 17:36:50.699 UTC [112917] LOG:  execute __diesel_stmt_0: SELECT "__diesel_schema_migrations"."version" FROM "__diesel_schema_migrations" ORDER BY "__diesel_schema_migrations"."version" DESC 
+2023-03-31 17:36:50.699 UTC [112917] LOG:  duration: 0.219 ms
+2023-03-31 17:36:50.700 UTC [112917] LOG:  statement: BEGIN
+2023-03-31 17:36:50.700 UTC [112917] LOG:  duration: 0.079 ms
+2023-03-31 17:36:50.701 UTC [112917] LOG:  statement: -- Your SQL goes here
+	CREATE TABLE meows (
+	    number INT,
+	    url TEXT PRIMARY KEY
+	);
+2023-03-31 17:36:50.715 UTC [112917] LOG:  duration: 14.949 ms
+2023-03-31 17:36:50.716 UTC [112917] LOG:  duration: 0.454 ms
+2023-03-31 17:36:50.717 UTC [112917] LOG:  duration: 0.128 ms
+2023-03-31 17:36:50.717 UTC [112917] LOG:  execute __diesel_stmt_1: INSERT INTO "__diesel_schema_migrations" ("version") VALUES ($1)
+2023-03-31 17:36:50.717 UTC [112917] DETAIL:  parameters: $1 = '20230331173252'
+2023-03-31 17:36:50.717 UTC [112917] LOG:  duration: 0.198 ms
+2023-03-31 17:36:50.717 UTC [112917] LOG:  statement: COMMIT
+2023-03-31 17:36:50.720 UTC [112917] LOG:  duration: 2.197 ms
+2023-03-31 17:36:50.720 UTC [112917] LOG:  disconnection: session time: 0:00:00.032 user=website database=database host=::1 port=43132
+2023-03-31 17:36:50.723 UTC [112918] LOG:  connection received: host=::1 port=43136
+2023-03-31 17:36:50.726 UTC [112918] LOG:  connection authorized: user=website database=database
+2023-03-31 17:36:50.729 UTC [112918] LOG:  duration: 0.359 ms
+2023-03-31 17:36:50.729 UTC [112918] LOG:  duration: 0.020 ms
+2023-03-31 17:36:50.729 UTC [112918] LOG:  execute <unnamed>: SET TIME ZONE 'UTC'
+2023-03-31 17:36:50.729 UTC [112918] LOG:  duration: 0.077 ms
+2023-03-31 17:36:50.730 UTC [112918] LOG:  duration: 0.055 ms
+2023-03-31 17:36:50.730 UTC [112918] LOG:  duration: 0.019 ms
+2023-03-31 17:36:50.730 UTC [112918] LOG:  execute <unnamed>: SET CLIENT_ENCODING TO 'UTF8'
+2023-03-31 17:36:50.730 UTC [112918] LOG:  duration: 0.033 ms
+2023-03-31 17:36:50.735 UTC [112918] LOG:  duration: 4.289 ms
+2023-03-31 17:36:50.740 UTC [112918] LOG:  duration: 4.477 ms
+2023-03-31 17:36:50.740 UTC [112918] LOG:  execute __diesel_stmt_0: SELECT "information_schema"."tables"."table_name" FROM "information_schema"."tables" WHERE ((("information_schema"."tables"."table_schema" = $1) AND ("information_schema"."tables"."table_name" NOT LIKE $2)) AND ("information_schema"."tables"."table_type" LIKE $3))
+2023-03-31 17:36:50.740 UTC [112918] DETAIL:  parameters: $1 = 'public', $2 = '\_\_%', $3 = 'BASE TABLE'
+2023-03-31 17:36:50.744 UTC [112918] LOG:  duration: 4.663 ms
+2023-03-31 17:36:50.745 UTC [112918] LOG:  disconnection: session time: 0:00:00.022 user=website database=database host=::1 port=43136
+2023-03-31 17:36:50.747 UTC [112919] LOG:  connection received: host=::1 port=43144
+2023-03-31 17:36:50.750 UTC [112919] LOG:  connection authorized: user=website database=database
+2023-03-31 17:36:50.753 UTC [112919] LOG:  duration: 0.351 ms
+2023-03-31 17:36:50.753 UTC [112919] LOG:  duration: 0.021 ms
+2023-03-31 17:36:50.753 UTC [112919] LOG:  execute <unnamed>: SET TIME ZONE 'UTC'
+2023-03-31 17:36:50.754 UTC [112919] LOG:  duration: 0.076 ms
+2023-03-31 17:36:50.754 UTC [112919] LOG:  duration: 0.053 ms
+2023-03-31 17:36:50.754 UTC [112919] LOG:  duration: 0.018 ms
+2023-03-31 17:36:50.754 UTC [112919] LOG:  execute <unnamed>: SET CLIENT_ENCODING TO 'UTF8'
+2023-03-31 17:36:50.754 UTC [112919] LOG:  duration: 0.031 ms
+2023-03-31 17:36:50.762 UTC [112919] LOG:  duration: 7.129 ms
+2023-03-31 17:36:50.776 UTC [112919] LOG:  duration: 13.629 ms
+2023-03-31 17:36:50.776 UTC [112919] LOG:  execute __diesel_stmt_0: SELECT "information_schema"."referential_constraints"."constraint_schema", "information_schema"."referential_constraints"."constraint_name", "information_schema"."referential_constraints"."unique_constraint_schema", "information_schema"."referential_constraints"."unique_constraint_name" FROM ("information_schema"."table_constraints" INNER JOIN "information_schema"."referential_constraints" ON (("information_schema"."table_constraints"."constraint_schema" = "information_schema"."referential_constraints"."constraint_schema") AND ("information_schema"."table_constraints"."constraint_name" = "information_schema"."referential_constraints"."constraint_name"))) WHERE (("information_schema"."table_constraints"."constraint_type" = $1) AND ("information_schema"."table_constraints"."table_schema" = $2))
+2023-03-31 17:36:50.776 UTC [112919] DETAIL:  parameters: $1 = 'FOREIGN KEY', $2 = 'public'
+2023-03-31 17:36:50.777 UTC [112919] LOG:  duration: 0.210 ms
+2023-03-31 17:36:50.777 UTC [112919] LOG:  disconnection: session time: 0:00:00.030 user=website database=database host=::1 port=43144
+2023-03-31 17:36:50.780 UTC [112920] LOG:  connection received: host=::1 port=43156
+2023-03-31 17:36:50.782 UTC [112920] LOG:  connection authorized: user=website database=database
+2023-03-31 17:36:50.785 UTC [112920] LOG:  duration: 0.376 ms
+2023-03-31 17:36:50.786 UTC [112920] LOG:  duration: 0.021 ms
+2023-03-31 17:36:50.786 UTC [112920] LOG:  execute <unnamed>: SET TIME ZONE 'UTC'
+2023-03-31 17:36:50.786 UTC [112920] LOG:  duration: 0.076 ms
+2023-03-31 17:36:50.786 UTC [112920] LOG:  duration: 0.053 ms
+2023-03-31 17:36:50.786 UTC [112920] LOG:  duration: 0.019 ms
+2023-03-31 17:36:50.786 UTC [112920] LOG:  execute <unnamed>: SET CLIENT_ENCODING TO 'UTF8'
+2023-03-31 17:36:50.786 UTC [112920] LOG:  duration: 0.032 ms
+2023-03-31 17:36:50.787 UTC [112920] LOG:  disconnection: session time: 0:00:00.008 user=website database=database host=::1 port=43156
+2023-03-31 17:36:50.790 UTC [112921] LOG:  connection received: host=::1 port=43166
+2023-03-31 17:36:50.792 UTC [112921] LOG:  connection authorized: user=website database=database
+2023-03-31 17:36:50.795 UTC [112921] LOG:  duration: 0.401 ms
+2023-03-31 17:36:50.796 UTC [112921] LOG:  duration: 0.021 ms
+2023-03-31 17:36:50.796 UTC [112921] LOG:  execute <unnamed>: SET TIME ZONE 'UTC'
+2023-03-31 17:36:50.796 UTC [112921] LOG:  duration: 0.076 ms
+2023-03-31 17:36:50.796 UTC [112921] LOG:  duration: 0.053 ms
+2023-03-31 17:36:50.796 UTC [112921] LOG:  duration: 0.018 ms
+2023-03-31 17:36:50.796 UTC [112921] LOG:  execute <unnamed>: SET CLIENT_ENCODING TO 'UTF8'
+2023-03-31 17:36:50.796 UTC [112921] LOG:  duration: 0.031 ms
+2023-03-31 17:36:50.802 UTC [112921] LOG:  duration: 4.794 ms
+2023-03-31 17:36:50.812 UTC [112921] LOG:  duration: 9.839 ms
+2023-03-31 17:36:50.812 UTC [112921] LOG:  execute __diesel_stmt_0: SELECT "information_schema"."key_column_usage"."column_name" FROM "information_schema"."key_column_usage" WHERE ((("information_schema"."key_column_usage"."constraint_name" = ANY(SELECT "information_schema"."table_constraints"."constraint_name" FROM "information_schema"."table_constraints" WHERE ("information_schema"."table_constraints"."constraint_type" = $1))) AND ("information_schema"."key_column_usage"."table_name" = $2)) AND ("information_schema"."key_column_usage"."table_schema" = $3)) ORDER BY "information_schema"."key_column_usage"."ordinal_position"
+2023-03-31 17:36:50.812 UTC [112921] DETAIL:  parameters: $1 = 'PRIMARY KEY', $2 = 'meows', $3 = 'public'
+2023-03-31 17:36:50.819 UTC [112921] LOG:  duration: 6.539 ms
+2023-03-31 17:36:50.824 UTC [112921] LOG:  duration: 4.749 ms
+2023-03-31 17:36:50.833 UTC [112921] LOG:  duration: 9.254 ms
+2023-03-31 17:36:50.833 UTC [112921] LOG:  execute __diesel_stmt_1: SELECT "information_schema"."columns"."column_name", "information_schema"."columns"."udt_name", "information_schema"."columns"."udt_schema", "information_schema"."columns"."is_nullable" FROM "information_schema"."columns" WHERE (("information_schema"."columns"."table_name" = $1) AND ("information_schema"."columns"."table_schema" = $2)) ORDER BY "information_schema"."columns"."ordinal_position"
+2023-03-31 17:36:50.833 UTC [112921] DETAIL:  parameters: $1 = 'meows', $2 = 'public'
+2023-03-31 17:36:50.834 UTC [112921] LOG:  duration: 0.304 ms
+2023-03-31 17:36:50.849 UTC [112921] LOG:  disconnection: session time: 0:00:00.059 user=website database=database host=::1 port=43166
+2023-03-31 17:40:14.400 UTC [113315] LOG:  connection received: host=::1 port=37246
+2023-03-31 17:40:14.401 UTC [113315] LOG:  connection authorized: user=website database=database
+2023-03-31 17:40:14.403 UTC [113315] LOG:  duration: 0.248 ms
+2023-03-31 17:40:14.404 UTC [113315] LOG:  duration: 0.013 ms
+2023-03-31 17:40:14.404 UTC [113315] LOG:  execute <unnamed>: SET TIME ZONE 'UTC'
+2023-03-31 17:40:14.404 UTC [113315] LOG:  duration: 0.050 ms
+2023-03-31 17:40:14.404 UTC [113315] LOG:  duration: 0.034 ms
+2023-03-31 17:40:14.404 UTC [113315] LOG:  duration: 0.009 ms
+2023-03-31 17:40:14.404 UTC [113315] LOG:  execute <unnamed>: SET CLIENT_ENCODING TO 'UTF8'
+2023-03-31 17:40:14.404 UTC [113315] LOG:  duration: 0.016 ms
+2023-03-31 17:40:14.404 UTC [113315] LOG:  statement: BEGIN
+2023-03-31 17:40:14.404 UTC [113315] LOG:  duration: 0.029 ms
+2023-03-31 17:40:14.405 UTC [113315] LOG:  duration: 0.067 ms
+2023-03-31 17:40:14.405 UTC [113315] LOG:  duration: 0.013 ms
+2023-03-31 17:40:14.405 UTC [113315] LOG:  execute <unnamed>: CREATE TABLE IF NOT EXISTS __diesel_schema_migrations (
+	       version VARCHAR(50) PRIMARY KEY NOT NULL,
+	       run_on TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+	);
+	
+2023-03-31 17:40:14.405 UTC [113315] LOG:  duration: 0.219 ms
+2023-03-31 17:40:14.406 UTC [113315] LOG:  duration: 0.783 ms
+2023-03-31 17:40:14.407 UTC [113315] LOG:  duration: 0.624 ms
+2023-03-31 17:40:14.407 UTC [113315] LOG:  execute __diesel_stmt_0: SELECT "__diesel_schema_migrations"."version" FROM "__diesel_schema_migrations" ORDER BY "__diesel_schema_migrations"."version" DESC 
+2023-03-31 17:40:14.407 UTC [113315] LOG:  duration: 0.129 ms
+2023-03-31 17:40:14.407 UTC [113315] LOG:  statement: SAVEPOINT diesel_savepoint_1
+2023-03-31 17:40:14.407 UTC [113315] LOG:  duration: 0.077 ms
+2023-03-31 17:40:14.407 UTC [113315] LOG:  statement: DROP TABLE meows;
+2023-03-31 17:40:14.410 UTC [113315] LOG:  duration: 2.112 ms
+2023-03-31 17:40:14.410 UTC [113315] LOG:  duration: 0.697 ms
+2023-03-31 17:40:14.411 UTC [113315] LOG:  duration: 0.111 ms
+2023-03-31 17:40:14.411 UTC [113315] LOG:  execute __diesel_stmt_1: DELETE  FROM "__diesel_schema_migrations" WHERE ("__diesel_schema_migrations"."version" = $1)
+2023-03-31 17:40:14.411 UTC [113315] DETAIL:  parameters: $1 = '20230331173252'
+2023-03-31 17:40:14.411 UTC [113315] LOG:  duration: 0.088 ms
+2023-03-31 17:40:14.411 UTC [113315] LOG:  statement: RELEASE SAVEPOINT diesel_savepoint_1
+2023-03-31 17:40:14.411 UTC [113315] LOG:  duration: 0.074 ms
+2023-03-31 17:40:14.412 UTC [113315] LOG:  statement: SAVEPOINT diesel_savepoint_1
+2023-03-31 17:40:14.412 UTC [113315] LOG:  duration: 0.063 ms
+2023-03-31 17:40:14.412 UTC [113315] LOG:  statement: -- Your SQL goes here
+	CREATE TABLE meows (
+	    number INT,
+	    url TEXT PRIMARY KEY
+	);
+2023-03-31 17:40:14.422 UTC [113315] LOG:  duration: 10.090 ms
+2023-03-31 17:40:14.423 UTC [113315] LOG:  duration: 0.360 ms
+2023-03-31 17:40:14.424 UTC [113315] LOG:  duration: 0.132 ms
+2023-03-31 17:40:14.424 UTC [113315] LOG:  execute __diesel_stmt_2: INSERT INTO "__diesel_schema_migrations" ("version") VALUES ($1)
+2023-03-31 17:40:14.424 UTC [113315] DETAIL:  parameters: $1 = '20230331173252'
+2023-03-31 17:40:14.424 UTC [113315] LOG:  duration: 0.159 ms
+2023-03-31 17:40:14.424 UTC [113315] LOG:  statement: RELEASE SAVEPOINT diesel_savepoint_1
+2023-03-31 17:40:14.424 UTC [113315] LOG:  duration: 0.101 ms
+2023-03-31 17:40:14.424 UTC [113315] LOG:  statement: COMMIT
+2023-03-31 17:40:14.428 UTC [113315] LOG:  duration: 3.447 ms
+2023-03-31 17:40:14.429 UTC [113315] LOG:  disconnection: session time: 0:00:00.029 user=website database=database host=::1 port=37246
+2023-03-31 17:40:14.432 UTC [113316] LOG:  connection received: host=::1 port=37250
+2023-03-31 17:40:14.434 UTC [113316] LOG:  connection authorized: user=website database=database
+2023-03-31 17:40:14.439 UTC [113316] LOG:  duration: 0.515 ms
+2023-03-31 17:40:14.439 UTC [113316] LOG:  duration: 0.053 ms
+2023-03-31 17:40:14.439 UTC [113316] LOG:  execute <unnamed>: SET TIME ZONE 'UTC'
+2023-03-31 17:40:14.439 UTC [113316] LOG:  duration: 0.105 ms
+2023-03-31 17:40:14.440 UTC [113316] LOG:  duration: 0.072 ms
+2023-03-31 17:40:14.440 UTC [113316] LOG:  duration: 0.024 ms
+2023-03-31 17:40:14.440 UTC [113316] LOG:  execute <unnamed>: SET CLIENT_ENCODING TO 'UTF8'
+2023-03-31 17:40:14.440 UTC [113316] LOG:  duration: 0.050 ms
+2023-03-31 17:40:14.447 UTC [113316] LOG:  duration: 6.810 ms
+2023-03-31 17:40:14.453 UTC [113316] LOG:  duration: 5.279 ms
+2023-03-31 17:40:14.453 UTC [113316] LOG:  execute __diesel_stmt_0: SELECT "information_schema"."tables"."table_name" FROM "information_schema"."tables" WHERE ((("information_schema"."tables"."table_schema" = $1) AND ("information_schema"."tables"."table_name" NOT LIKE $2)) AND ("information_schema"."tables"."table_type" LIKE $3))
+2023-03-31 17:40:14.453 UTC [113316] DETAIL:  parameters: $1 = 'public', $2 = '\_\_%', $3 = 'BASE TABLE'
+2023-03-31 17:40:14.457 UTC [113316] LOG:  duration: 4.175 ms
+2023-03-31 17:40:14.458 UTC [113316] LOG:  disconnection: session time: 0:00:00.027 user=website database=database host=::1 port=37250
+2023-03-31 17:40:14.461 UTC [113317] LOG:  connection received: host=::1 port=37262
+2023-03-31 17:40:14.464 UTC [113317] LOG:  connection authorized: user=website database=database
+2023-03-31 17:40:14.468 UTC [113317] LOG:  duration: 0.374 ms
+2023-03-31 17:40:14.468 UTC [113317] LOG:  duration: 0.040 ms
+2023-03-31 17:40:14.468 UTC [113317] LOG:  execute <unnamed>: SET TIME ZONE 'UTC'
+2023-03-31 17:40:14.468 UTC [113317] LOG:  duration: 0.112 ms
+2023-03-31 17:40:14.469 UTC [113317] LOG:  duration: 0.061 ms
+2023-03-31 17:40:14.469 UTC [113317] LOG:  duration: 0.021 ms
+2023-03-31 17:40:14.469 UTC [113317] LOG:  execute <unnamed>: SET CLIENT_ENCODING TO 'UTF8'
+2023-03-31 17:40:14.469 UTC [113317] LOG:  duration: 0.036 ms
+2023-03-31 17:40:14.477 UTC [113317] LOG:  duration: 7.106 ms
+2023-03-31 17:40:14.492 UTC [113317] LOG:  duration: 15.197 ms
+2023-03-31 17:40:14.493 UTC [113317] LOG:  execute __diesel_stmt_0: SELECT "information_schema"."referential_constraints"."constraint_schema", "information_schema"."referential_constraints"."constraint_name", "information_schema"."referential_constraints"."unique_constraint_schema", "information_schema"."referential_constraints"."unique_constraint_name" FROM ("information_schema"."table_constraints" INNER JOIN "information_schema"."referential_constraints" ON (("information_schema"."table_constraints"."constraint_schema" = "information_schema"."referential_constraints"."constraint_schema") AND ("information_schema"."table_constraints"."constraint_name" = "information_schema"."referential_constraints"."constraint_name"))) WHERE (("information_schema"."table_constraints"."constraint_type" = $1) AND ("information_schema"."table_constraints"."table_schema" = $2))
+2023-03-31 17:40:14.493 UTC [113317] DETAIL:  parameters: $1 = 'FOREIGN KEY', $2 = 'public'
+2023-03-31 17:40:14.493 UTC [113317] LOG:  duration: 0.149 ms
+2023-03-31 17:40:14.493 UTC [113317] LOG:  disconnection: session time: 0:00:00.033 user=website database=database host=::1 port=37262
+2023-03-31 17:40:14.496 UTC [113318] LOG:  connection received: host=::1 port=37268
+2023-03-31 17:40:14.499 UTC [113318] LOG:  connection authorized: user=website database=database
+2023-03-31 17:40:14.503 UTC [113318] LOG:  duration: 0.401 ms
+2023-03-31 17:40:14.503 UTC [113318] LOG:  duration: 0.056 ms
+2023-03-31 17:40:14.503 UTC [113318] LOG:  execute <unnamed>: SET TIME ZONE 'UTC'
+2023-03-31 17:40:14.503 UTC [113318] LOG:  duration: 0.123 ms
+2023-03-31 17:40:14.504 UTC [113318] LOG:  duration: 0.065 ms
+2023-03-31 17:40:14.504 UTC [113318] LOG:  duration: 0.021 ms
+2023-03-31 17:40:14.504 UTC [113318] LOG:  execute <unnamed>: SET CLIENT_ENCODING TO 'UTF8'
+2023-03-31 17:40:14.504 UTC [113318] LOG:  duration: 0.058 ms
+2023-03-31 17:40:14.505 UTC [113318] LOG:  disconnection: session time: 0:00:00.009 user=website database=database host=::1 port=37268
+2023-03-31 17:40:14.508 UTC [113319] LOG:  connection received: host=::1 port=37270
+2023-03-31 17:40:14.511 UTC [113319] LOG:  connection authorized: user=website database=database
+2023-03-31 17:40:14.514 UTC [113319] LOG:  duration: 0.429 ms
+2023-03-31 17:40:14.515 UTC [113319] LOG:  duration: 0.023 ms
+2023-03-31 17:40:14.515 UTC [113319] LOG:  execute <unnamed>: SET TIME ZONE 'UTC'
+2023-03-31 17:40:14.515 UTC [113319] LOG:  duration: 0.086 ms
+2023-03-31 17:40:14.515 UTC [113319] LOG:  duration: 0.061 ms
+2023-03-31 17:40:14.516 UTC [113319] LOG:  duration: 0.021 ms
+2023-03-31 17:40:14.516 UTC [113319] LOG:  execute <unnamed>: SET CLIENT_ENCODING TO 'UTF8'
+2023-03-31 17:40:14.516 UTC [113319] LOG:  duration: 0.035 ms
+2023-03-31 17:40:14.522 UTC [113319] LOG:  duration: 5.253 ms
+2023-03-31 17:40:14.533 UTC [113319] LOG:  duration: 10.821 ms
+2023-03-31 17:40:14.533 UTC [113319] LOG:  execute __diesel_stmt_0: SELECT "information_schema"."key_column_usage"."column_name" FROM "information_schema"."key_column_usage" WHERE ((("information_schema"."key_column_usage"."constraint_name" = ANY(SELECT "information_schema"."table_constraints"."constraint_name" FROM "information_schema"."table_constraints" WHERE ("information_schema"."table_constraints"."constraint_type" = $1))) AND ("information_schema"."key_column_usage"."table_name" = $2)) AND ("information_schema"."key_column_usage"."table_schema" = $3)) ORDER BY "information_schema"."key_column_usage"."ordinal_position"
+2023-03-31 17:40:14.533 UTC [113319] DETAIL:  parameters: $1 = 'PRIMARY KEY', $2 = 'meows', $3 = 'public'
+2023-03-31 17:40:14.540 UTC [113319] LOG:  duration: 7.159 ms
+2023-03-31 17:40:14.546 UTC [113319] LOG:  duration: 5.351 ms
+2023-03-31 17:40:14.556 UTC [113319] LOG:  duration: 9.890 ms
+2023-03-31 17:40:14.556 UTC [113319] LOG:  execute __diesel_stmt_1: SELECT "information_schema"."columns"."column_name", "information_schema"."columns"."udt_name", "information_schema"."columns"."udt_schema", "information_schema"."columns"."is_nullable" FROM "information_schema"."columns" WHERE (("information_schema"."columns"."table_name" = $1) AND ("information_schema"."columns"."table_schema" = $2)) ORDER BY "information_schema"."columns"."ordinal_position"
+2023-03-31 17:40:14.556 UTC [113319] DETAIL:  parameters: $1 = 'meows', $2 = 'public'
+2023-03-31 17:40:14.557 UTC [113319] LOG:  duration: 0.308 ms
+2023-03-31 17:40:14.558 UTC [113319] LOG:  disconnection: session time: 0:00:00.051 user=website database=database host=::1 port=37270

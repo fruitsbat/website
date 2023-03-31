@@ -1,7 +1,7 @@
 .tag {
   color: var(--background-color);
   background: var(--cyan);
-  border-radius: 1em;
+  border-radius: 0.24em;
   padding: calc(var(--padding-size) / 2);
   text-decoration: none;
   display: inline-block;
@@ -13,5 +13,5 @@
 
 .tag-list {
   display: flex;
-  gap: var(--padding-size);
+  gap: var(--radius);
 }
