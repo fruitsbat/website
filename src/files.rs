@@ -27,7 +27,7 @@ pub fn write_data<W: Writable + ?Sized>(pages: &Vec<Box<W>>) -> Result<(), Box<d
         file.read(&mut current_filecontents)?;
 
         // only complain abt write access if its actually needed
-        if !(Bytes::copy_from_slice(&current_filecontents) == filecontents) {
+        if Bytes::copy_from_slice(&current_filecontents) != filecontents {
             let mut file = OpenOptions::new().write(true).open(path)?;
             file.write_all(&filecontents)?;
         }

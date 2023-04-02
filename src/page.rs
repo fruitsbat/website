@@ -1,5 +1,4 @@
 use crate::components::footer::Footer;
-use bytes::Bytes;
 use maud::{html, Markup, Render, DOCTYPE};
 use strum::EnumIter;
 
@@ -58,7 +57,6 @@ impl Render for Page {
                 (Footer {active: self.category})
             }
         }
-        .into()
     }
 }
 
@@ -85,14 +83,5 @@ impl Render for YouAreHere {
                 }
             }
         }
-    }
-}
-
-impl crate::files::Writable for Page {
-    fn path(&self) -> String {
-        format!("{}/index.html", self.path.concat())
-    }
-    fn filecontents(&self) -> Bytes {
-        Bytes::copy_from_slice(html! {(self)}.into_string().as_bytes())
     }
 }

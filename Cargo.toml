@@ -9,12 +9,7 @@ edition = "2021"
 strum = { version = "0.24", features = ["derive"] }
 maud = { version = "0.24", features = [] }
 grass = { version = "0.12", features = ["include_sass", "macro"] }
-bytes = "1.4"
 rocket = { version = "0.5.0-rc.3", features = [] }
 diesel = { version = "2", features = ["postgres"] }
 diesel_migrations = "2"
-serde = "1.0.159"
-rocket-include-static-resources = { version = "0.10.3", features = [
-  "rocket-cache-response",
-  "cache",
-] }
+serde = "1"

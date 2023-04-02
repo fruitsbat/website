@@ -1,4 +1,4 @@
-use crate::files::Asset;
+use crate::assets::Asset;
 
 use super::tag::Tag;
 use maud::{html, Markup, Render};
@@ -32,10 +32,9 @@ impl Render for Linkbox {
         let image = match &self.image {
             None => html! {},
             Some(image) => html! {
-                img src=(format!("/assets/{}/{}",
-                    image.asset_type.folder(),
-                    image.path.concat()))
-                    alt=(image.alt)
+                img src=(format!("/assets/{}",
+                    image.filename()))
+                    alt=(image.alt())
                  {}
             },
         };

@@ -3,11 +3,11 @@ use rocket::response::content::RawHtml;
 use strum::{EnumIter, IntoEnumIterator};
 
 use crate::{
+    assets::Asset,
     components::{
         linkbox::{Linkbox, LinkboxContainer},
         tag::Tag,
     },
-    files::{Asset, AssetType, Writable},
     page::Page,
 };
 
@@ -32,7 +32,6 @@ pub fn main_page() -> RawHtml<String> {
 }
 
 pub struct BlogEntry {
-    pub assets: Vec<Box<dyn Writable>>,
     pub preview_image: Option<Asset>,
     pub tags: Vec<Tag>,
     pub content: Markup,
@@ -46,7 +45,7 @@ impl BlogEntry {
         Linkbox {
             legend: self.title.into(),
             path: vec!["/", "blog/", self.slug],
-            image: self.preview_image.clone(),
+            image: self.preview_image,
             description: self.description.into(),
             tags: self.tags.clone(),
         }
@@ -64,7 +63,6 @@ impl BlogEntries {
     fn get(&self) -> BlogEntry {
         match &self {
             BlogEntries::Doggies => BlogEntry {
-                assets: vec![],
                 preview_image: None,
                 tags: vec![Tag::Doggies, Tag::Animals],
                 content: html! {},
@@ -73,13 +71,7 @@ impl BlogEntries {
                 description: "doggies know nothing they heads are empty",
             },
             BlogEntries::Kitties => BlogEntry {
-                assets: vec![],
-                preview_image: Some(Asset {
-                    path: vec!["funnycat.jpg"],
-                    content: include_bytes!("../assets/funnycat.jpg"),
-                    asset_type: AssetType::Image,
-                    alt: "a small kitty smiling and doing a :3 face",
-                }),
+                preview_image: Some(Asset::Kittyroll),
                 tags: vec![Tag::Kitties, Tag::Animals, Tag::Meow],
                 content: html! {},
                 slug: "kitties/",
