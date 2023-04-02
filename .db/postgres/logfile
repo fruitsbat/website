@@ -1,4 +1,0 @@
-2023-04-01 12:28:40.962 UTC [49005] LOG:  redirecting log output to logging collector process
-2023-04-01 12:28:40.962 UTC [49005] HINT:  Future log output will appear in directory "logs".
-2023-04-02 12:47:20.684 UTC [14042] FATAL:  database files are incompatible with server
-2023-04-02 12:47:20.684 UTC [14042] DETAIL:  The data directory was initialized by PostgreSQL version 14, which is not compatible with this version 15.2.
