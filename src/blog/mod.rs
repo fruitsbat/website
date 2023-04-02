@@ -1,4 +1,5 @@
-use maud::{html, Markup};
+use maud::{html, Markup, Render};
+use rocket::response::content::RawHtml;
 use strum::{EnumIter, IntoEnumIterator};
 
 use crate::{
@@ -8,37 +9,11 @@ use crate::{
     },
     files::{Asset, AssetType, Writable},
     page::Page,
-    tags::tags_page,
 };
-pub fn blog_pages() -> Vec<Box<dyn Writable>> {
-    let mut writables: Vec<Box<dyn Writable>> = vec![];
-    for post in BlogEntries::iter() {
-        writables.append(&mut post.get().assets);
-        match post.get().preview_image {
-            None => (),
-            Some(image) => writables.append(&mut vec![Box::new(image)]),
-        }
-        writables.append(&mut vec![Box::new(Page {
-            content: post.get().content,
-            category: crate::page::Category::Blog,
-            path: vec!["/", "blog/", post.get().slug],
-            title: post.get().title,
-        })]);
-    }
-    for tag in Tag::iter() {
-        let mut links = vec![];
-        for page in BlogEntries::iter() {
-            if page.get().tags.contains(&tag) {
-                links.push(page.get().linkbox());
-            }
-        }
-        writables.append(&mut vec![Box::new(Page {
-            content: html! {(LinkboxContainer {linkboxes: links})},
-            category: crate::page::Category::Blog,
-            path: tag.link(),
-            title: tag.display_as(),
-        })]);
-    }
+
+// get main page
+#[get("/log")]
+pub fn main_page() -> RawHtml<String> {
     let linkbox_container = LinkboxContainer {
         linkboxes: BlogEntries::iter()
             .map(|i| i.get())
@@ -53,8 +28,7 @@ pub fn blog_pages() -> Vec<Box<dyn Writable>> {
             (linkbox_container)
         },
     };
-    writables.append(&mut vec![Box::new(main_page), Box::new(tags_page())]);
-    writables
+    RawHtml(main_page.render().into_string())
 }
 
 pub struct BlogEntry {

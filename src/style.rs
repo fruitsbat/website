@@ -1,11 +1,6 @@
-use bytes::Bytes;
+use rocket::response::content::RawCss;
 
-pub struct Css;
-impl crate::files::Writable for Css {
-    fn filecontents(&self) -> Bytes {
-        Bytes::copy_from_slice(grass::include!("src/css/index.scss").as_bytes())
-    }
-    fn path(&self) -> String {
-        "index.css".into()
-    }
+#[get("/index.css")]
+pub fn css() -> RawCss<&'static str> {
+    RawCss(grass::include!("src/css/index.scss").into())
 }

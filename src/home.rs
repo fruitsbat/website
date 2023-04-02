@@ -1,13 +1,12 @@
 use crate::{
-    blinkies::{Blinkies, Blinkybox},
-    files::Writable,
+    blinkies::Blinkybox,
     page::{Category, Page},
 };
-use maud::html;
-use strum::IntoEnumIterator;
+use maud::{html, Render};
+use rocket::response::content::RawHtml;
 
-pub fn home_page() -> Vec<Box<dyn Writable>> {
-    let mut writables: Vec<Box<dyn Writable>> = vec![];
+#[get("/")]
+pub fn home_page() -> RawHtml<String> {
     let content = html! {
         iframe
         frameBorder = "0"
@@ -16,14 +15,11 @@ pub fn home_page() -> Vec<Box<dyn Writable>> {
         {}
         (Blinkybox)
     };
-    writables.append(&mut vec![Box::new(Page {
+    let page = Page {
         content,
         category: Category::Home,
         title: "home",
         path: vec!["/"],
-    })]);
-    for blinky in Blinkies::iter() {
-        writables.push(Box::new(blinky.asset()));
-    }
-    writables
+    };
+    RawHtml(page.render().into_string())
 }

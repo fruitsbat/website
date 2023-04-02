@@ -1,12 +1,14 @@
-use std::error::Error;
+#![feature(decl_macro)]
 
-use maud::html;
+use maud::{html, Markup, Render};
 use rocket::response::content::RawHtml;
+use std::error::Error;
 
 pub mod blinkies;
 pub mod blog;
 pub mod components;
 pub mod files;
+pub mod font;
 pub mod home;
 pub mod models;
 pub mod page;
@@ -20,25 +22,8 @@ const EXPORT_PATH: &'static str = "result";
 
 #[launch]
 fn launch() -> _ {
-    let mut v: Vec<Box<dyn files::Writable>> = vec![
-        Box::new(style::Css),
-        Box::new(files::Asset {
-            path: vec!["atkinson.woff2"],
-            asset_type: files::AssetType::Font,
-            content: include_bytes!("font/atkinson_regular.woff2"),
-            alt: "",
-        }),
-    ];
-    v.append(&mut blog::blog_pages());
-    v.append(&mut home::home_page());
-    //  match files::write_data(&v) {
-    //     Err(e) => panic!("failed to write: {}", e),
-    //     Ok(_) => (),
-    // };
-    rocket::build().mount("/", routes![main_page])
-}
-
-#[get("/")]
-fn main_page() -> String {
-    "hehe".into()
+    rocket::build().mount(
+        "/",
+        routes![home::home_page, blog::main_page, style::css, blinkies::file, font::regular],
+    )
 }

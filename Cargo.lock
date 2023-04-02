@@ -82,6 +82,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d468802bab17cbc0cc575e9b053f41e72aa36bfa6b7f55e3529ffa43161b97fa"
 
 [[package]]
+name = "base64"
+version = "0.13.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9e1b586273c5702936fe7b7d6896644d8be71e6314cfe09d3167c95f712589e8"
+
+[[package]]
 name = "binascii"
 version = "0.1.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -154,6 +160,12 @@ dependencies = [
  "time",
  "version_check",
 ]
+
+[[package]]
+name = "debug-helper"
+version = "0.3.13"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f578e8e2c440e7297e008bb5486a3a8a194775224bbc23729b0dbdfaeebf162e"
 
 [[package]]
 name = "devise"
@@ -237,6 +249,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "071a31f4ee85403370b58aca746f01041ede6f0da2730960ad001edc2b71b394"
 dependencies = [
  "cfg-if",
+]
+
+[[package]]
+name = "entity-tag"
+version = "0.1.6"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e4ec56e489f9caf6cc04abe7f3ac402b534a3227d5baf6088cd62d2e7afbdf64"
+dependencies = [
+ "ahash",
+ "base64",
 ]
 
 [[package]]
@@ -665,6 +687,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "manifest-dir-macros"
+version = "0.1.16"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f08150cf2bab1fc47c2196f4f41173a27fcd0f684165e5458c0046b53a472e2f"
+dependencies = [
+ "mime_guess",
+ "once_cell",
+ "proc-macro2",
+ "quote",
+ "syn 1.0.109",
+]
+
+[[package]]
 name = "matchers"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -727,6 +762,16 @@ name = "mime"
 version = "0.3.17"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6877bb514081ee2a7ff5ef9de3281f14a4dd4bceac4c09388074a6b5df8a139a"
+
+[[package]]
+name = "mime_guess"
+version = "2.0.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4192263c238a5f0d0c6bfd21f336a313a4ce1c450542449ca191bb657b4642ef"
+dependencies = [
+ "mime",
+ "unicase",
+]
 
 [[package]]
 name = "mio"
@@ -1007,6 +1052,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "rc-u8-reader"
+version = "2.0.16"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1a8ff360edcc1f6d67e58e2bfdc91b314fd75860e65bf8da34fd0d39e3fe5b41"
+dependencies = [
+ "debug-helper",
+ "tokio",
+]
+
+[[package]]
 name = "redox_syscall"
 version = "0.2.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1104,6 +1159,40 @@ dependencies = [
  "ubyte",
  "version_check",
  "yansi",
+]
+
+[[package]]
+name = "rocket-cache-response"
+version = "0.6.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d1c61bb828cb5ed810b76c1f3a61c2ca9fc21df8b150edbde564e823bb63d1c1"
+dependencies = [
+ "rocket",
+]
+
+[[package]]
+name = "rocket-etag-if-none-match"
+version = "0.4.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1cba10b7cd514cf7193012a69be5b6954fefab8c8129e417cf83c560a4476385"
+dependencies = [
+ "entity-tag",
+ "rocket",
+]
+
+[[package]]
+name = "rocket-include-static-resources"
+version = "0.10.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "332e6a9779662d155aa586016ba56f3997818283e1165bd1f3076f71e67b03ad"
+dependencies = [
+ "manifest-dir-macros",
+ "mime",
+ "mime_guess",
+ "rc-u8-reader",
+ "rocket",
+ "rocket-cache-response",
+ "rocket-etag-if-none-match",
 ]
 
 [[package]]
@@ -1557,6 +1646,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "unicase"
+version = "2.6.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "50f37be617794602aabbeee0be4f259dc1778fabe05e2d67ee8f79326d5cb4f6"
+dependencies = [
+ "version_check",
+]
+
+[[package]]
 name = "unicode-ident"
 version = "1.0.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1624,6 +1722,8 @@ dependencies = [
  "grass",
  "maud",
  "rocket",
+ "rocket-include-static-resources",
+ "serde",
  "strum",
 ]
 

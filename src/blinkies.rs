@@ -1,42 +1,52 @@
 use maud::{html, Render};
+use rocket::{
+    http::{ContentType, Status},
+    serde::{Deserialize, Serialize},
+};
 use strum::{EnumIter, IntoEnumIterator};
 
-use crate::files::{Asset, AssetType};
-
-#[derive(EnumIter)]
+#[derive(EnumIter, Serialize, Deserialize)]
 pub enum Blinkies {
     Trains,
     Abductable,
     Frickinbats,
 }
 
-impl Blinkies {
-    pub fn asset(&self) -> Asset {
-        let asset_type = AssetType::Image;
-        match &self {
-            Self::Trains => Asset {
-                path: vec!["blinkies/", "trains.gif"],
-                content: include_bytes!("assets/blinkies/trains.gif"),
-                asset_type,
-                alt: "a blinky that says this user is trains",
-            },
-            Self::Abductable => Asset {
-                path: vec!["blinkies/", "abductable.gif"],
-                content: include_bytes!("assets/blinkies/abductable.gif"),
-                asset_type,
-                alt: "an image of an alien that says abductable next to it",
-            },
-            Self::Frickinbats => Asset {
-                path: vec!["blinkies/", "frickinbats.gif"],
-                content: include_bytes!("assets/blinkies/frickinbats.gif"),
-                asset_type,
-                alt: "a few bat shapes on a black background",
-            },
+#[get("/assets/blinkies/<file>")]
+pub fn file(file: String) -> Result<(ContentType, &'static [u8]), Status> {
+    for blinkie in Blinkies::iter() {
+        if blinkie.filename() == file {
+            return Ok((ContentType::GIF, blinkie.content()));
         }
     }
+    Err(Status::NotFound)
 }
 
 impl Blinkies {
+    pub fn filename(&self) -> &'static str {
+        match &self {
+            Self::Trains => "trains.gif",
+            Self::Abductable => "abductable.gif",
+            Self::Frickinbats => "frickinbats.gif",
+        }
+    }
+
+    pub fn content(&self) -> &'static [u8] {
+        match self {
+            Self::Trains => include_bytes!("assets/blinkies/trains.gif"),
+            Self::Abductable => include_bytes!("assets/blinkies/abductable.gif"),
+            Self::Frickinbats => include_bytes!("assets/blinkies/frickinbats.gif"),
+        }
+    }
+
+    pub fn alt(&self) -> &'static str {
+        match &self {
+            Self::Trains => "this user is trains on top of a trans flag",
+            Self::Abductable => "an alien, next to it it says abductible",
+            Self::Frickinbats => "outlines of bats on a black background",
+        }
+    }
+
     pub fn url(&self) -> &'static str {
         match &self {
             Self::Trains => "https://web.archive.org/web/20220510005638/https://pronoun.is/fae",
@@ -50,7 +60,7 @@ impl Render for Blinkies {
     fn render(&self) -> maud::Markup {
         html! {
             a href=(self.url()) {
-                img alt=(self.asset().alt) src=(format!("/assets/images/{}", self.asset().path.concat())) {}
+                img alt=(self.alt()) src=(format!("/assets/blinkies/{}", self.filename())) {}
             }
         }
     }
