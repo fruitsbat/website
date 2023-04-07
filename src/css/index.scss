@@ -19,6 +19,13 @@
   box-sizing: inherit;
 }
 
+header {
+  padding: var(--padding-size);
+  width: 100vw;
+  border-bottom: var(--border-width) solid var(--cyan);
+  background: var(--background-color);
+}
+
 a {
   text-decoration: underline;
   text-decoration-color: var(--cyan);
@@ -48,7 +55,7 @@ a.active::before {
 }
 
 footer {
-  width: 100%;
+  width: 100vw;
   display: flex;
   position: sticky;
   bottom: 0;

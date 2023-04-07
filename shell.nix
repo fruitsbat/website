@@ -14,13 +14,13 @@ let
   '';
 in
   pkgs.mkShell rec {
-    name = "rssc-intract-env";
-
     buildInputs = [
       pkgs.pkg-config
       pkgs.openssl
       pkgs.postgresql
       pkgs.diesel-cli
+      pkgs.mold
+      pkgs.cargo
       dbStop
       dbStart
     ];

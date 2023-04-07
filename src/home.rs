@@ -8,6 +8,13 @@ use rocket::response::content::RawHtml;
 #[get("/")]
 pub fn home_page() -> RawHtml<String> {
     let content = html! {
+        p {
+            ("hi! i'm zoe,  welcome to my website! ")
+            a href="/feed"
+            {
+                ("an atom feed is available here.")
+            }
+        }
         iframe
         frameBorder = "0"
         src="https://ring.bicompact.space/zoe-bat/pre"
@@ -19,7 +26,7 @@ pub fn home_page() -> RawHtml<String> {
         content,
         category: Category::Home,
         title: "home",
-        path: vec!["/"],
+        show_tags: false,
     };
     RawHtml(page.render().into_string())
 }

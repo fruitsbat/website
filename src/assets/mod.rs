@@ -22,10 +22,7 @@ impl Asset {
 
     pub fn content_type(&self) -> ContentType {
         match self {
-            Self::TrainsBlinkie => ContentType::GIF,
-            Self::FrickinbatsBlinkie => ContentType::GIF,
-            Self::AbductableBlinkie => ContentType::GIF,
-            Self::Kittyroll => ContentType::JPEG,
+            _ => ContentType::Any,
         }
     }
 
@@ -52,7 +49,7 @@ impl Asset {
 pub fn file(file: String) -> Result<(ContentType, &'static [u8]), Status> {
     for asset in Asset::iter() {
         if asset.filename() == file {
-            return Ok((ContentType::Any, asset.content()));
+            return Ok((asset.content_type(), asset.content()));
         }
     }
     Err(Status::NotFound)

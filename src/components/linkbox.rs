@@ -21,7 +21,7 @@ impl Render for LinkboxContainer {
 pub struct Linkbox {
     pub legend: String,
     /// link that this leads to
-    pub path: Vec<&'static str>,
+    pub path: String,
     pub image: Option<Asset>,
     pub description: String,
     pub tags: Vec<Tag>,
@@ -40,7 +40,7 @@ impl Render for Linkbox {
         };
         html! {
             fieldset role="presentation" class="linkbox" {
-                legend {h2 {a href=(self.path.concat()) {(self.legend)}}}
+                legend {h2 {a href=(self.path) {(self.legend)}}}
                 div {
                     p {(self.description)}
                     (image)
