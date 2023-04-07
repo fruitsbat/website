@@ -1,4 +1,4 @@
-use crate::{blog::BlogEntries, page::Page};
+use crate::{blog::BlogEntry, page::Page};
 use maud::{html, Markup, Render};
 use rocket::{http::Status, response::content::RawHtml};
 use strum::{EnumIter, IntoEnumIterator};
@@ -10,7 +10,7 @@ pub fn tags(link: String) -> Result<RawHtml<String>, Status> {
     for tag in Tag::iter() {
         if tag.link() == link {
             let mut linkboxes = vec![];
-            for blog in BlogEntries::iter() {
+            for blog in BlogEntry::iter() {
                 if blog.tags().contains(&tag) {
                     linkboxes.push(blog.linkbox())
                 }

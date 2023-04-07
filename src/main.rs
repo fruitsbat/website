@@ -9,6 +9,7 @@ pub mod home;
 mod migrations;
 pub mod models;
 pub mod page;
+pub mod schema;
 pub mod style;
 
 #[macro_use]

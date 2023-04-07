@@ -81,6 +81,7 @@ body {
   justify-content: center;
   padding: var(--padding-size);
   gap: var(--padding-size);
+  flex-grow: 5;
 }
 
 html {

@@ -16,7 +16,7 @@ use crate::{
 #[get("/log")]
 pub fn main_page() -> RawHtml<String> {
     let linkbox_container = LinkboxContainer {
-        linkboxes: BlogEntries::iter()
+        linkboxes: BlogEntry::iter()
             .map(|i| i.linkbox())
             .collect::<Vec<Linkbox>>(),
     };
@@ -32,12 +32,12 @@ pub fn main_page() -> RawHtml<String> {
 }
 
 #[derive(EnumIter)]
-pub enum BlogEntries {
+pub enum BlogEntry {
     Doggies,
     Kitties,
 }
 
-impl BlogEntries {
+impl BlogEntry {
     pub fn preview_image(&self) -> Option<Asset> {
         match self {
             Self::Doggies => None,
@@ -126,8 +126,8 @@ impl BlogEntries {
     }
 }
 
-fn get_entry(entry: &str) -> Result<BlogEntries, Status> {
-    for blog in BlogEntries::iter() {
+fn get_entry(entry: &str) -> Result<BlogEntry, Status> {
+    for blog in BlogEntry::iter() {
         if blog.slug() == entry {
             return Ok(blog);
         }

@@ -5,7 +5,7 @@ pub const MIGRATIONS: EmbeddedMigrations = embed_migrations!("migrations");
 
 pub fn establish_connection() -> Result<PgConnection, ConnectionError> {
     // TODO development only, read this from config file
-    let database_url = "postgres://website:password@localhost/database";
+    let database_url = "postgres://username:password@localhost/database";
     PgConnection::establish(database_url)
 }
 

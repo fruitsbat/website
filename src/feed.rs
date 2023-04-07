@@ -3,9 +3,9 @@ use chrono::{DateTime, FixedOffset};
 use rocket::response::content::RawXml;
 use strum::IntoEnumIterator;
 
-use crate::{blog::BlogEntries, components::tag::Tag};
+use crate::{blog::BlogEntry, components::tag::Tag};
 
-#[get("/feed")]
+#[get("/index.xml")]
 pub fn feed() -> RawXml<String> {
     let feed = Feed {
         title: Text {
@@ -16,7 +16,7 @@ pub fn feed() -> RawXml<String> {
         id: format!("{}/feed", crate::URL),
         updated: newest(),
         categories: Tag::iter().map(|f| f.category()).collect::<Vec<Category>>(),
-        entries: BlogEntries::iter()
+        entries: BlogEntry::iter()
             .map(|entry| entry.entry())
             .collect::<Vec<Entry>>(),
         ..Default::default()
@@ -27,7 +27,7 @@ pub fn feed() -> RawXml<String> {
 /// determine when the feed was last updated
 fn newest() -> DateTime<FixedOffset> {
     let mut largest = None;
-    for e in BlogEntries::iter() {
+    for e in BlogEntry::iter() {
         match largest {
             None => largest = Some(e.date()),
             Some(l) => {

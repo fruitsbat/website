@@ -10,7 +10,7 @@ pub fn home_page() -> RawHtml<String> {
     let content = html! {
         p {
             ("hi! i'm zoe,  welcome to my website! ")
-            a href="/feed"
+            a href="/index.xml"
             {
                 ("an atom feed is available here.")
             }
