@@ -9,6 +9,7 @@ pub mod db;
 pub mod feed;
 pub mod font;
 pub mod home;
+pub mod markdown;
 mod migrations;
 pub mod models;
 pub mod page;
