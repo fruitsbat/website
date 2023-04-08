@@ -1,6 +1,6 @@
 use maud::{html, Markup, Render};
 
-use crate::assets::Asset;
+
 
 pub struct Table {
     pub rows: Vec<Row>,
