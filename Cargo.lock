@@ -198,6 +198,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "confy"
+version = "0.5.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e37668cb35145dcfaa1931a5f37fde375eeae8068b4c0d2f289da28a270b2d2c"
+dependencies = [
+ "directories",
+ "serde",
+ "thiserror",
+ "toml",
+]
+
+[[package]]
 name = "cookie"
 version = "0.17.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -400,6 +412,26 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f6cf7fe294274a222363f84bcb63cdea762979a0443b4cf1f4f8fd17c86b1182"
 dependencies = [
  "chrono",
+]
+
+[[package]]
+name = "directories"
+version = "4.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f51c5d4ddabd36886dd3e1438cb358cdcb0d7c499cb99cb4ac2e38e18b5cb210"
+dependencies = [
+ "dirs-sys",
+]
+
+[[package]]
+name = "dirs-sys"
+version = "0.3.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1b1d1d91c932ef41c0f2663aa8b0ca0342d444d842c06914aa0a7e352d0bada6"
+dependencies = [
+ "libc",
+ "redox_users",
+ "winapi",
 ]
 
 [[package]]
@@ -1286,6 +1318,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "redox_users"
+version = "0.4.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b033d837a7cf162d7993aded9304e30a83213c648b6e389db233191f891e5c2b"
+dependencies = [
+ "getrandom",
+ "redox_syscall 0.2.16",
+ "thiserror",
+]
+
+[[package]]
 name = "ref-cast"
 version = "1.0.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1646,6 +1689,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "thiserror"
+version = "1.0.40"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "978c9a314bd8dc99be594bc3c175faaa9794be04a5a5e153caba6915336cebac"
+dependencies = [
+ "thiserror-impl",
+]
+
+[[package]]
+name = "thiserror-impl"
+version = "1.0.40"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f9456a42c5b0d803c8cd86e73dd7cc9edd429499f37a3550d286d5e86720569f"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn 2.0.13",
+]
+
+[[package]]
 name = "thread_local"
 version = "1.1.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1973,11 +2036,15 @@ version = "0.1.0"
 dependencies = [
  "atom_syndication",
  "chrono",
+ "confy",
  "diesel",
  "diesel_migrations",
  "grass",
+ "lazy_static",
  "maud",
  "rocket",
+ "serde",
+ "serde_derive",
  "strum",
 ]
 

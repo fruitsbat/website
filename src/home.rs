@@ -26,7 +26,7 @@ pub fn home_page() -> RawHtml<String> {
         content,
         category: Category::Home,
         title: "home",
-        show_tags: false,
+        ..Default::default()
     };
     RawHtml(page.render().into_string())
 }

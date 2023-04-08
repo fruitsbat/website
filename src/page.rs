@@ -1,4 +1,4 @@
-use crate::components::{footer::Footer, tag::TagList};
+use crate::components::{footer::Footer, meow::Meow, tag::TagList};
 use maud::{html, Markup, Render, DOCTYPE};
 use strum::EnumIter;
 
@@ -28,6 +28,7 @@ pub struct Page {
     pub category: Category,
     pub title: &'static str,
     pub show_tags: bool,
+    pub meow: Option<Meow>,
 }
 
 impl Default for Page {
@@ -37,6 +38,7 @@ impl Default for Page {
             title: "",
             show_tags: false,
             content: html! {},
+            meow: None,
         }
     }
 }
@@ -48,21 +50,31 @@ impl Render for Page {
             show_tags: self.show_tags,
         };
 
+        let meow = match &self.meow {
+            None => html! {},
+            Some(meow) => html! {(meow)},
+        };
+
         html! {
             (DOCTYPE)
+            meta charset="UTF8" {}
             meta
             name="viewport"
             content="width=device-width"
             initial-scale="1.0" {}
-            meta charset="UTF8" {}
             title {(self.title)}
             link rel="stylesheet" href="/index.css" {}
+            link
+            rel="alternate"
+            type="application/atom+xml"
+            href="/index.xml" {}
             html lang=("en") {
                 (header)
                 body {
                     div #content {
                         (self.content.clone())
                     }
+                    (meow)
                 }
                 (Footer {active: self.category})
             }

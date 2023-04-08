@@ -21,6 +21,7 @@ pub fn tags(link: String) -> Result<RawHtml<String>, Status> {
                 category: crate::page::Category::Blog,
                 title: tag.display_as(),
                 show_tags: true,
+                ..Default::default()
             };
             return Ok(RawHtml(page.render().into_string()));
         }

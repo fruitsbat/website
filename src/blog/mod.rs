@@ -7,8 +7,10 @@ use crate::{
     assets::Asset,
     components::{
         linkbox::{Linkbox, LinkboxContainer},
+        meow::Meow,
         tag::Tag,
     },
+    config::CONFIG,
     page::{Category, Page},
 };
 
@@ -27,6 +29,7 @@ pub fn main_page() -> RawHtml<String> {
             (linkbox_container)
         },
         show_tags: true,
+        ..Default::default()
     };
     RawHtml(main_page.render().into_string())
 }
@@ -75,7 +78,7 @@ impl BlogEntry {
             Self::Kitties => (2022, 12, 2, 0, 0, 0),
             _ => (2013, 1, 1, 13, 0, 0),
         };
-        FixedOffset::west_opt(1 * hour)
+        FixedOffset::west_opt(2 * hour)
             .unwrap()
             .with_ymd_and_hms(time.0, time.1, time.2, time.3, time.4, time.5)
             .unwrap()
@@ -92,7 +95,7 @@ impl BlogEntry {
     pub fn entry(&self) -> atom_syndication::Entry {
         atom_syndication::Entry {
             title: self.title().into(),
-            id: format!("{}/log/{}", crate::URL, self.slug()),
+            id: format!("{}/log/{}", CONFIG.base_url, self.slug()),
             categories: self
                 .tags()
                 .iter()
@@ -104,9 +107,9 @@ impl BlogEntry {
                 ..Default::default()
             }),
             content: Some(atom_syndication::Content {
-                base: Some(format!("{}", crate::URL)),
+                base: Some(format!("{}", CONFIG.base_url)),
                 lang: Some("en".into()),
-                src: Some(format!("{}/log/{}", crate::URL, self.slug())),
+                src: Some(format!("{}/log/{}", CONFIG.base_url, self.slug())),
                 content_type: Some("html".into()),
                 ..Default::default()
             }),
@@ -126,7 +129,8 @@ impl BlogEntry {
     }
 }
 
-fn get_entry(entry: &str) -> Result<BlogEntry, Status> {
+/// get blog entry by slug
+pub fn get_entry(entry: &str) -> Result<BlogEntry, Status> {
     for blog in BlogEntry::iter() {
         if blog.slug() == entry {
             return Ok(blog);
@@ -144,8 +148,9 @@ pub fn pages(entry: String) -> Result<RawHtml<String>, Status> {
                 Page {
                     content: post.content(),
                     title: post.title(),
-                    show_tags: false,
                     category: Category::Blog,
+                    meow: Meow::from_blog(&post).ok(),
+                    ..Default::default()
                 }
                 .render()
                 .into_string(),

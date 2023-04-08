@@ -1,14 +1,12 @@
 .tag {
-  color: var(--background-color);
-  background: var(--cyan);
-  border-radius: 0.24em;
+  border-radius: var(--radius);
+  border: var(--border-width) solid var(--cyan);
   padding: calc(var(--padding-size) / 2);
-  text-decoration: none;
   display: inline-block;
 }
 
 .tag:hover {
-  background: var(--green);
+  border: var(--border-width) solid var(--green);
 }
 
 .tag-list {
