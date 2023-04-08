@@ -67,9 +67,7 @@ impl BlogEntry {
         }
     }
     pub fn slug(&self) -> &'static str {
-        match self {
-            _ => self.title(),
-        }
+        self.title()
     }
 
     pub fn date(&self) -> DateTime<FixedOffset> {
@@ -107,7 +105,7 @@ impl BlogEntry {
                 ..Default::default()
             }),
             content: Some(atom_syndication::Content {
-                base: Some(format!("{}", CONFIG.base_url)),
+                base: Some(CONFIG.base_url.to_string()),
                 lang: Some("en".into()),
                 src: Some(format!("{}/log/{}", CONFIG.base_url, self.slug())),
                 content_type: Some("html".into()),
@@ -142,7 +140,7 @@ pub fn get_entry(entry: &str) -> Result<BlogEntry, Status> {
 #[get("/log/<entry>")]
 pub fn pages(entry: String) -> Result<RawHtml<String>, Status> {
     match get_entry(&entry) {
-        Err(status) => return Err(status),
+        Err(status) => Err(status),
         Ok(post) => {
             return Ok(RawHtml(
                 Page {

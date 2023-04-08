@@ -22,15 +22,15 @@ impl Meow {
         let connection = &mut db::establish_connection()?;
         let result = dsl::meows.find(blog.slug()).get_result::<Meow>(connection);
         match result {
-            Ok(result) => return Ok(result),
+            Ok(result) => Ok(result),
             Err(_) => {
                 // not found, so we insert a new one
-                return Ok(diesel::insert_into(meows::table)
+                Ok(diesel::insert_into(meows::table)
                     .values(&Meow {
                         number: 0,
                         blog: blog.slug().into(),
                     })
-                    .get_result::<Meow>(connection)?);
+                    .get_result::<Meow>(connection)?)
             }
         }
     }
@@ -72,7 +72,7 @@ pub fn meow(entry: String) -> Result<Redirect, Status> {
         .set(dsl::number.eq(count))
         .get_result::<Meow>(&mut connection)
     {
-        Err(_) => return Err(Status::InternalServerError),
-        Ok(_) => return Ok(Redirect::to(format!("/log/{}", blog.slug()))),
-    };
+        Err(_) => Err(Status::InternalServerError),
+        Ok(_) => Ok(Redirect::to(format!("/log/{}", blog.slug()))),
+    }
 }

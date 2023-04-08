@@ -23,11 +23,9 @@ extern crate lazy_static;
 
 #[launch]
 fn launch() -> _ {
-    match db::run_migrations() {
-        Err(e) => panic!("dead bc {}", e),
-        Ok(_) => (),
-    };
-
+    if let Err(e) = db::run_migrations() {
+        panic!("dead bc {}", e)
+    }
     let routes = routes![
         home::home_page,
         feed::feed,

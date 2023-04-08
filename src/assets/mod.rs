@@ -21,9 +21,7 @@ impl Asset {
     }
 
     pub fn content_type(&self) -> ContentType {
-        match self {
-            _ => ContentType::Any,
-        }
+        ContentType::Any
     }
 
     pub fn content(&self) -> &'static [u8] {
