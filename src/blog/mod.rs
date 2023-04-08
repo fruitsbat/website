@@ -11,6 +11,7 @@ use crate::{
         tag::Tag,
     },
     config::CONFIG,
+    markdown::Markdown,
     page::{Category, Page},
 };
 
@@ -36,45 +37,45 @@ pub fn main_page() -> RawHtml<String> {
 
 #[derive(EnumIter)]
 pub enum BlogEntry {
-    Doggies,
-    Kitties,
+    RewritingMyWebsiteInRust,
 }
 
 impl BlogEntry {
     pub fn preview_image(&self) -> Option<Asset> {
         match self {
-            Self::Doggies => None,
-            Self::Kitties => Some(Asset::Kittyroll),
+            Self::RewritingMyWebsiteInRust => None,
         }
     }
     pub fn tags(&self) -> Vec<Tag> {
         match self {
-            Self::Doggies => vec![Tag::Doggies, Tag::Animals],
-            Self::Kitties => vec![Tag::Kitties, Tag::Animals],
+            Self::RewritingMyWebsiteInRust => {
+                vec![Tag::Cyberspace, Tag::ThingsIMade, Tag::Programming]
+            }
         }
     }
     pub fn content(&self) -> Markup {
         match self {
-            Self::Kitties => html! {p {("meow meow meow")}},
-            _ => html! {},
+            Self::RewritingMyWebsiteInRust => {
+                Markdown(include_str!("./rewriting_my_website.md")).render()
+            }
         }
     }
 
     pub fn title(&self) -> &'static str {
         match self {
-            Self::Doggies => "doggies",
-            Self::Kitties => "kitties",
+            Self::RewritingMyWebsiteInRust => "rewriting my website in rust",
         }
     }
     pub fn slug(&self) -> &'static str {
-        self.title()
+        match &self {
+            Self::RewritingMyWebsiteInRust => "rewriting_my_website_in_rust",
+        }
     }
 
     pub fn date(&self) -> DateTime<FixedOffset> {
         let hour = 3600;
         let time = match self {
-            Self::Kitties => (2022, 12, 2, 0, 0, 0),
-            _ => (2013, 1, 1, 13, 0, 0),
+            Self::RewritingMyWebsiteInRust => (2023, 4, 8, 23, 30, 0),
         };
         FixedOffset::west_opt(2 * hour)
             .unwrap()
@@ -84,8 +85,9 @@ impl BlogEntry {
 
     pub fn description(&self) -> &'static str {
         match self {
-            Self::Doggies => "doggies know nothing their heads are empty",
-            Self::Kitties => "kitties know how to see a ghost (scary)",
+            Self::RewritingMyWebsiteInRust => {
+                "a reasonable and important thing to do for a personal blog"
+            }
         }
     }
 

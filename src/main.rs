@@ -35,6 +35,7 @@ fn launch() -> _ {
         style::css,
         assets::file,
         font::regular,
+        font::bold,
         components::tag::tags,
         components::meow::meow,
     ];

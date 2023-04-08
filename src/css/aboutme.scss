@@ -1,0 +1,26 @@
+.aboutme {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.aboutme img {
+  width: 30%;
+  flex-grow: 1;
+  max-width: 540px;
+  height: auto;
+}
+
+.aboutme table {
+  flex-grow: 2;
+}
+
+@media screen and (max-width: 540px) {
+  .aboutme {
+    flex-direction: column;
+  }
+  .aboutme img {
+    width: 100%;
+  }
+}

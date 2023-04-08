@@ -31,27 +31,24 @@ pub fn tags(link: String) -> Result<RawHtml<String>, Status> {
 
 #[derive(EnumIter, PartialEq, Clone, FromFormField)]
 pub enum Tag {
-    Animals,
-    Doggies,
-    Kitties,
-    Meow,
+    ThingsIMade,
+    Programming,
+    Cyberspace,
 }
 
 impl Tag {
     pub fn link(&self) -> &'static str {
         match &self {
-            Tag::Animals => "animals",
-            Tag::Doggies => "doggies",
-            Tag::Kitties => "kitties",
-            Tag::Meow => "meow",
+            Self::ThingsIMade => "things_i_made",
+            Self::Cyberspace => "cyberspace",
+            Self::Programming => "programming",
         }
     }
     pub fn display_as(&self) -> &'static str {
         match &self {
-            Tag::Animals => "animals",
-            Tag::Doggies => "doggies",
-            Tag::Kitties => "kitties",
-            Tag::Meow => "meow",
+            Self::Programming => "programming",
+            Self::ThingsIMade => "things i made",
+            Self::Cyberspace => "cyberspace",
         }
     }
     pub fn category(&self) -> atom_syndication::Category {

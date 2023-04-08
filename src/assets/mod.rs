@@ -4,6 +4,7 @@ use strum::{EnumIter, IntoEnumIterator};
 // videos, images, sound, etc
 #[derive(EnumIter, Copy, Clone)]
 pub enum Asset {
+    Me,
     Kittyroll,
     FrickinbatsBlinkie,
     TrainsBlinkie,
@@ -17,6 +18,7 @@ impl Asset {
             Self::AbductableBlinkie => "abductable.gif",
             Self::FrickinbatsBlinkie => "frickinbats.gif",
             Self::Kittyroll => "funnycat.jpg",
+            Self::Me => "me.jpg",
         }
     }
 
@@ -30,6 +32,7 @@ impl Asset {
             Self::AbductableBlinkie => include_bytes!("blinkies/abductable.gif"),
             Self::FrickinbatsBlinkie => include_bytes!("blinkies/frickinbats.gif"),
             Self::Kittyroll => include_bytes!("funnycat.jpg"),
+            Self::Me => include_bytes!("me.jpg"),
         }
     }
 
@@ -39,6 +42,7 @@ impl Asset {
             Self::AbductableBlinkie => "an alien, next to it it says abductible",
             Self::FrickinbatsBlinkie => "outlines of bats on a black background",
             Self::Kittyroll => "a cat all rolled up",
+            Self::Me => "a picture of me",
         }
     }
 }

@@ -4,6 +4,7 @@
 @import "./linkbox.scss";
 @import "./tag.scss";
 @import "./meowbutton.scss";
+@import "./aboutme.scss";
 
 * {
   padding: 0;
@@ -31,6 +32,14 @@ a {
   text-decoration: underline;
   text-decoration-color: var(--cyan);
   text-decoration-thickness: var(--border-width);
+}
+
+strong {
+  color: var(--mauve);
+}
+
+.mauve {
+  color: var(--mauve);
 }
 
 iframe {

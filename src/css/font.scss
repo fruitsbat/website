@@ -1,4 +1,10 @@
 @font-face {
-  font-family: "atkinson"; /* Gewünschter Name */
+  font-family: "atkinson";
   src: url("/assets/fonts/atkinson.woff2");
+}
+
+@font-face {
+  font-family: "atkinson";
+  src: url("/assets/fonts/atkinson_bold.woff2");
+  font-weight: bold;
 }
