@@ -9,6 +9,7 @@ pub enum Asset {
     FrickinbatsBlinkie,
     TrainsBlinkie,
     AbductableBlinkie,
+    Kaokao,
 }
 
 impl Asset {
@@ -19,11 +20,16 @@ impl Asset {
             Self::FrickinbatsBlinkie => "frickinbats.gif",
             Self::Kittyroll => "funnycat.jpg",
             Self::Me => "me.jpg",
+            Self::Kaokao => "kaokao.gif",
         }
     }
 
     pub fn content_type(&self) -> ContentType {
-        ContentType::Any
+        match self {
+            Self::Kaokao => ContentType::GIF,
+            Self::Me => ContentType::JPEG,
+            _ => ContentType::Any,
+        }
     }
 
     pub fn content(&self) -> &'static [u8] {
@@ -33,6 +39,7 @@ impl Asset {
             Self::FrickinbatsBlinkie => include_bytes!("blinkies/frickinbats.gif"),
             Self::Kittyroll => include_bytes!("funnycat.jpg"),
             Self::Me => include_bytes!("me.jpg"),
+            Self::Kaokao => include_bytes!("kaokao.gif"),
         }
     }
 
@@ -43,6 +50,9 @@ impl Asset {
             Self::FrickinbatsBlinkie => "outlines of bats on a black background",
             Self::Kittyroll => "a cat all rolled up",
             Self::Me => "a picture of me",
+            Self::Kaokao => {
+                "a gif example showing off kaokao, an emoji is being selected from a big list"
+            }
         }
     }
 }

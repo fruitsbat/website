@@ -32,8 +32,10 @@ pub fn tags(link: String) -> Result<RawHtml<String>, Status> {
 #[derive(EnumIter, PartialEq, Clone, FromFormField)]
 pub enum Tag {
     ThingsIMade,
+    Rust,
     Programming,
     Cyberspace,
+    Emoji,
 }
 
 impl Tag {
@@ -42,6 +44,8 @@ impl Tag {
             Self::ThingsIMade => "things_i_made",
             Self::Cyberspace => "cyberspace",
             Self::Programming => "programming",
+            Self::Emoji => "emoji",
+            Self::Rust => "rust",
         }
     }
     pub fn display_as(&self) -> &'static str {
@@ -49,6 +53,8 @@ impl Tag {
             Self::Programming => "programming",
             Self::ThingsIMade => "things i made",
             Self::Cyberspace => "cyberspace",
+            Self::Emoji => "emoji",
+            Self::Rust => "rust",
         }
     }
     pub fn category(&self) -> atom_syndication::Category {

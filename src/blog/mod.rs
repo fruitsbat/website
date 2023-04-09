@@ -37,6 +37,7 @@ pub fn main_page() -> RawHtml<String> {
 
 #[derive(EnumIter)]
 pub enum BlogEntry {
+    Kaokao,
     RewritingMyWebsiteInRust,
 }
 
@@ -44,12 +45,21 @@ impl BlogEntry {
     pub fn preview_image(&self) -> Option<Asset> {
         match self {
             Self::RewritingMyWebsiteInRust => None,
+            Self::Kaokao => Some(Asset::Kaokao),
         }
     }
     pub fn tags(&self) -> Vec<Tag> {
         match self {
             Self::RewritingMyWebsiteInRust => {
-                vec![Tag::Cyberspace, Tag::ThingsIMade, Tag::Programming]
+                vec![
+                    Tag::Cyberspace,
+                    Tag::ThingsIMade,
+                    Tag::Programming,
+                    Tag::Rust,
+                ]
+            }
+            Self::Kaokao => {
+                vec![Tag::ThingsIMade, Tag::Emoji, Tag::Programming, Tag::Rust]
             }
         }
     }
@@ -58,17 +68,20 @@ impl BlogEntry {
             Self::RewritingMyWebsiteInRust => {
                 Markdown(include_str!("./rewriting_my_website.md")).render()
             }
+            Self::Kaokao => Markdown(include_str!("./kaokao.md")).render(),
         }
     }
 
     pub fn title(&self) -> &'static str {
         match self {
             Self::RewritingMyWebsiteInRust => "rewriting my website in rust",
+            Self::Kaokao => "kaokao",
         }
     }
     pub fn slug(&self) -> &'static str {
         match &self {
             Self::RewritingMyWebsiteInRust => "rewriting_my_website_in_rust",
+            Self::Kaokao => "kaokao",
         }
     }
 
@@ -76,6 +89,7 @@ impl BlogEntry {
         let hour = 3600;
         let time = match self {
             Self::RewritingMyWebsiteInRust => (2023, 4, 8, 23, 30, 0),
+            Self::Kaokao => (2023, 4, 9, 10, 0, 0),
         };
         FixedOffset::west_opt(2 * hour)
             .unwrap()
@@ -88,6 +102,7 @@ impl BlogEntry {
             Self::RewritingMyWebsiteInRust => {
                 "a reasonable and important thing to do for a personal blog"
             }
+            Self::Kaokao => "kaokao is an emoji picker with support for custom and builtin kaomoji",
         }
     }
 

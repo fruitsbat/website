@@ -28,6 +28,14 @@ header {
   background: var(--background-color);
 }
 
+img {
+  width: 100%;
+}
+
+.blinkybox a img {
+  width: auto;
+}
+
 a {
   text-decoration: underline;
   text-decoration-color: var(--cyan);
