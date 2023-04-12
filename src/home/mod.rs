@@ -14,22 +14,19 @@ use itertools::join;
 use maud::{html, Markup, Render};
 use rand::{seq::SliceRandom, thread_rng};
 use rocket::response::content::RawHtml;
+use std::error::Error;
 use strum::IntoEnumIterator;
 
 #[get("/")]
 pub fn home_page() -> RawHtml<String> {
-    let recommended_tag: Tag = Tag::iter()
-        .collect::<Vec<Tag>>()
-        .choose(&mut thread_rng())
-        .unwrap()
-        .clone();
+    let recommendations = match recommendations() {
+        Ok(r) => r,
+        Err(_) => html! {},
+    };
     let content = html! {
         p {
-            "this is where i write about "
-            a href=(format!("/tag/{}", recommended_tag.link())) {
-                (recommended_tag.display_as())
-            }
-            ". "
+            (recommendations)
+            " "
             a href="/index.xml"
             {
                 ("an atom feed is available here.")
@@ -54,6 +51,21 @@ pub fn home_page() -> RawHtml<String> {
         canonical: CONFIG.base_url.clone(),
     };
     RawHtml(page.render().into_string())
+}
+
+fn recommendations() -> Result<Markup, Box<dyn Error>> {
+    let mut tags: Vec<Tag> = Tag::iter().collect::<Vec<Tag>>();
+    tags.shuffle(&mut thread_rng());
+    let html = html! {
+        "this is where i write about "
+        (tags.pop().ok_or("could not find tag 1")?.a())
+        ", "
+        (tags.pop().ok_or("could not find tag 2")?.a())
+        " and "
+        (tags.pop().ok_or("could not find tag 3")?.a())
+        "."
+    };
+    Ok(html)
 }
 
 #[cached]

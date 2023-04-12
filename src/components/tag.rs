@@ -69,6 +69,11 @@ impl Tag {
             ..Default::default()
         }
     }
+    pub fn a(&self) -> Markup {
+        html! {a href=(format!("/tag/{}", self.link())){
+            (self.display_as())
+        }}
+    }
 }
 
 impl Render for Tag {
