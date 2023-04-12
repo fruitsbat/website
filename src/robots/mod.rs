@@ -1,4 +1,4 @@
 #[get("/robots.txt")]
 pub fn robots() -> &'static str {
-    "User-agent: *\nDisallow:"
+    include_str!("robots.txt")
 }
