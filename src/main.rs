@@ -15,6 +15,7 @@ pub mod models;
 pub mod page;
 mod robots;
 pub mod schema;
+mod sitemap;
 pub mod style;
 mod verification;
 

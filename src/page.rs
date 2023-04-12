@@ -29,22 +29,9 @@ pub struct Page {
     pub title: &'static str,
     pub show_tags: bool,
     pub meow: Option<Meow>,
-    pub keywords: Option<String>,
-    pub description: Option<String>,
-}
-
-impl Default for Page {
-    fn default() -> Self {
-        Page {
-            category: Category::Blog,
-            title: "",
-            show_tags: false,
-            content: html! {},
-            meow: None,
-            keywords: None,
-            description: None,
-        }
-    }
+    pub keywords: String,
+    pub description: String,
+    pub canonical: String,
 }
 
 impl Render for Page {
@@ -59,22 +46,23 @@ impl Render for Page {
             Some(meow) => html! {(meow)},
         };
 
-        let keywords = match &self.keywords {
-            None => html! {},
-            Some(keywords) => html! {
-                meta
-                    name="keywords"
-                    content=(keywords){}
-            },
+        let keywords = html! {
+            meta
+                name="keywords"
+                content=(self.keywords){}
         };
 
-        let description = match &self.description {
-            None => html! {},
-            Some(description) => html! {
+        let description = html! {
                 meta
                     name="description"
-                    content=(description) {}
-            },
+                    content=(self.description) {}
+        };
+
+        let canonical = html! {
+            link
+            rel="canonical"
+            href=(self.canonical)
+            {}
         };
 
         let head = html! {
@@ -88,6 +76,7 @@ impl Render for Page {
                 link rel="stylesheet" href="/index.css" {}
                 (keywords)
                 (description)
+                (canonical)
                 link
                     rel="alternate"
                     type="application/atom+xml"

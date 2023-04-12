@@ -28,15 +28,16 @@ pub fn main_page() -> RawHtml<String> {
     };
     let main_page = Page {
         category: crate::page::Category::Blog,
+        canonical: format!("{}/log", CONFIG.base_url),
+        meow: None,
         title: "weblog",
         content: html! {
             (linkbox_container)
         },
         show_tags: true,
-        description: Some("a list of all blog entries about various topics".into()),
+        description: "a list of all blog entries about various topics".into(),
         // use all tags as keywords
-        keywords: Some(join(Tag::iter().map(|t| t.display_as()), ", ")),
-        ..Default::default()
+        keywords: join(Tag::iter().map(|t| t.display_as()), ", "),
     };
     RawHtml(main_page.render().into_string())
 }
@@ -171,10 +172,11 @@ pub fn pages(entry: String) -> Result<RawHtml<String>, Status> {
                     content: post.content(),
                     title: post.title(),
                     category: Category::Blog,
-                    description: Some(post.description().into()),
-                    keywords: Some(join(post.tags().iter().map(|tag| tag.display_as()), ", ")),
+                    description: post.description().into(),
+                    keywords: join(post.tags().iter().map(|tag| tag.display_as()), ", "),
                     meow: Meow::from_blog(&post).ok(),
-                    ..Default::default()
+                    canonical: format!("{}/log/{}", CONFIG.base_url, post.slug()),
+                    show_tags: false,
                 }
                 .render()
                 .into_string(),

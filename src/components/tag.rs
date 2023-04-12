@@ -1,4 +1,4 @@
-use crate::{blog::BlogEntry, page::Page};
+use crate::{blog::BlogEntry, config::CONFIG, page::Page};
 use cached::proc_macro::cached;
 use maud::{html, Markup, Render};
 use rocket::{http::Status, response::content::RawHtml};
@@ -21,11 +21,12 @@ pub fn tags(link: String) -> Result<RawHtml<String>, Status> {
             let page = Page {
                 content: html! {(linkbox_container)},
                 category: crate::page::Category::Blog,
+                meow: None,
                 title: tag.display_as(),
-                keywords: Some(tag.display_as().into()),
-                description: Some(format!("blogposts tagged with: {}", tag.display_as())),
+                keywords: tag.display_as().into(),
+                description: format!("blogposts tagged with: {}", tag.display_as()),
                 show_tags: true,
-                ..Default::default()
+                canonical: format!("{}/log", CONFIG.base_url),
             };
             return Ok(RawHtml(page.render().into_string()));
         }

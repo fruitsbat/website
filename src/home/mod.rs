@@ -5,6 +5,7 @@ use crate::{
         table::{Row, Table},
         tag::Tag,
     },
+    config::CONFIG,
     markdown::Markdown,
     page::{Category, Page},
 };
@@ -45,10 +46,12 @@ pub fn home_page() -> RawHtml<String> {
     let page = Page {
         content,
         category: Category::Home,
+        show_tags: false,
+        meow: None,
         title: "hi! i'm zoe. welcome to my website",
-        description: Some("my (zoe bat) personal blog, where i write about things".into()),
-        keywords: Some(join(Tag::iter().map(|t| t.display_as()), ", ")),
-        ..Default::default()
+        description: "my (zoe bat) personal blog, where i write about things".into(),
+        keywords: join(Tag::iter().map(|t| t.display_as()), ", "),
+        canonical: CONFIG.base_url.clone(),
     };
     RawHtml(page.render().into_string())
 }
