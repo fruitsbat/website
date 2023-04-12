@@ -120,14 +120,19 @@ struct Header {
 impl Render for Header {
     fn render(&self) -> Markup {
         let tags = if self.show_tags {
-            html! {(TagList {})}
+            html! {
+                details {
+                    summary {"show all tags"}
+                    (TagList {})
+                }
+            }
         } else {
             html! {}
         };
         html! {
             Header {
                 h1 {(self.title)}
-                (tags)
+                nav {(tags)}
             }
         }
     }

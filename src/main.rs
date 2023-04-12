@@ -16,6 +16,7 @@ pub mod page;
 mod robots;
 pub mod schema;
 pub mod style;
+mod verification;
 
 #[macro_use]
 extern crate rocket;
@@ -39,7 +40,8 @@ fn launch() -> _ {
         font::bold,
         components::tag::tags,
         components::meow::meow,
-        robots::robots
+        robots::robots,
+        verification::google,
     ];
     rocket::custom(Figment::from(rocket::Config::default()).merge(("port", config::CONFIG.port)))
         .mount("/", routes)

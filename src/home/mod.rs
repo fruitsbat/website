@@ -11,20 +11,29 @@ use crate::{
 use cached::proc_macro::cached;
 use itertools::join;
 use maud::{html, Markup, Render};
+use rand::{seq::SliceRandom, thread_rng};
 use rocket::response::content::RawHtml;
 use strum::IntoEnumIterator;
 
-#[cached]
 #[get("/")]
 pub fn home_page() -> RawHtml<String> {
+    let recommended_tag: Tag = Tag::iter()
+        .collect::<Vec<Tag>>()
+        .choose(&mut thread_rng())
+        .unwrap()
+        .clone();
     let content = html! {
         p {
+            "this is where i write about "
+            a href=(format!("/tag/{}", recommended_tag.link())) {
+                (recommended_tag.display_as())
+            }
+            ". "
             a href="/index.xml"
             {
                 ("an atom feed is available here.")
             }
         }
-        // (Markdown(include_str!("aboutme.md")))
         (aboutme())
         iframe
         frameBorder = "0"
@@ -44,6 +53,7 @@ pub fn home_page() -> RawHtml<String> {
     RawHtml(page.render().into_string())
 }
 
+#[cached]
 fn aboutme() -> Markup {
     let table = Table {
         rows: vec![

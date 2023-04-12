@@ -21,4 +21,5 @@ serde = "1"
 pulldown-cmark = { version = "0.9", default-features = false }
 ammonia = "3"
 itertools = "0.10"
-cached = "0.43.0"
+cached = "0.43"
+rand = "0.8"
