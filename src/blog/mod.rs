@@ -1,4 +1,6 @@
+use cached::proc_macro::cached;
 use chrono::{DateTime, FixedOffset, TimeZone};
+use itertools::join;
 use maud::{html, Markup, Render};
 use rocket::{http::Status, response::content::RawHtml};
 use strum::{EnumIter, IntoEnumIterator};
@@ -17,6 +19,7 @@ use crate::{
 
 // get main page
 #[get("/log")]
+#[cached]
 pub fn main_page() -> RawHtml<String> {
     let linkbox_container = LinkboxContainer {
         linkboxes: BlogEntry::iter()
@@ -30,6 +33,9 @@ pub fn main_page() -> RawHtml<String> {
             (linkbox_container)
         },
         show_tags: true,
+        description: Some("a list of all blog entries about various topics".into()),
+        // use all tags as keywords
+        keywords: Some(join(Tag::iter().map(|t| t.display_as()), ",")),
         ..Default::default()
     };
     RawHtml(main_page.render().into_string())
@@ -154,6 +160,7 @@ pub fn get_entry(entry: &str) -> Result<BlogEntry, Status> {
     Err(Status::NotFound)
 }
 
+/// turn blog entries into pages and serve them
 #[get("/log/<entry>")]
 pub fn pages(entry: String) -> Result<RawHtml<String>, Status> {
     match get_entry(&entry) {
@@ -164,6 +171,8 @@ pub fn pages(entry: String) -> Result<RawHtml<String>, Status> {
                     content: post.content(),
                     title: post.title(),
                     category: Category::Blog,
+                    description: Some(post.description().into()),
+                    keywords: Some(join(post.tags().iter().map(|tag| tag.display_as()), ",")),
                     meow: Meow::from_blog(&post).ok(),
                     ..Default::default()
                 }

@@ -29,6 +29,8 @@ pub struct Page {
     pub title: &'static str,
     pub show_tags: bool,
     pub meow: Option<Meow>,
+    pub keywords: Option<String>,
+    pub description: Option<String>,
 }
 
 impl Default for Page {
@@ -39,6 +41,8 @@ impl Default for Page {
             show_tags: false,
             content: html! {},
             meow: None,
+            keywords: None,
+            description: None,
         }
     }
 }
@@ -55,19 +59,41 @@ impl Render for Page {
             Some(meow) => html! {(meow)},
         };
 
+        let keywords = match &self.keywords {
+            None => html! {},
+            Some(keywords) => html! {
+                meta
+                    name="keywords"
+                    content=(keywords){}
+            },
+        };
+
+        let description = match &self.description {
+            None => html! {},
+            Some(description) => html! {
+                meta
+                    name="description"
+                    content=(description) {}
+            },
+        };
+
         html! {
             (DOCTYPE)
-            meta charset="UTF8" {}
-            meta
-            name="viewport"
-            content="width=device-width"
-            initial-scale="1.0" {}
-            title {(self.title)}
-            link rel="stylesheet" href="/index.css" {}
-            link
-            rel="alternate"
-            type="application/atom+xml"
-            href="/index.xml" {}
+            head {
+                meta charset="UTF8" {}
+                meta
+                    name="viewport"
+                    content="width=device-width"
+                    initial-scale="1.0" {}
+                title {(self.title)}
+                link rel="stylesheet" href="/index.css" {}
+                (keywords)
+                (description)
+                link
+                    rel="alternate"
+                    type="application/atom+xml"
+                    href="/index.xml" {}
+            }
             html lang=("en") {
                 (header)
                 body {

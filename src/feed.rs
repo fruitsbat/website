@@ -4,8 +4,10 @@ use rocket::response::content::RawXml;
 use strum::IntoEnumIterator;
 
 use crate::{blog::BlogEntry, components::tag::Tag, config::CONFIG};
+use cached::proc_macro::cached;
 
 /// servers a feed with every blog entry
+#[cached]
 #[get("/index.xml")]
 pub fn feed() -> RawXml<String> {
     let feed = Feed {

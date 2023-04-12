@@ -1,3 +1,4 @@
+use cached::proc_macro::cached;
 use rocket::http::{ContentType, Status};
 use strum::{EnumIter, IntoEnumIterator};
 
@@ -57,6 +58,7 @@ impl Asset {
     }
 }
 
+#[cached]
 #[get("/assets/<file>")]
 pub fn file(file: String) -> Result<(ContentType, &'static [u8]), Status> {
     for asset in Asset::iter() {

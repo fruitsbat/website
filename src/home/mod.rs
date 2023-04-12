@@ -5,17 +5,15 @@ use crate::{
     markdown::Markdown,
     page::{Category, Page},
 };
+use cached::proc_macro::cached;
 use maud::{html, Markup, Render};
 use rocket::response::content::RawHtml;
 
-lazy_static! {
-    static ref HOME_PAGE: RawHtml<String> = get_home_page();
-}
-
-fn get_home_page() -> RawHtml<String> {
+#[cached]
+#[get("/")]
+pub fn home_page() -> RawHtml<String> {
     let content = html! {
         p {
-            ("hi! i'm zoe,  welcome to my website! ")
             a href="/index.xml"
             {
                 ("an atom feed is available here.")
@@ -33,15 +31,10 @@ fn get_home_page() -> RawHtml<String> {
     let page = Page {
         content,
         category: Category::Home,
-        title: "home",
+        title: "hi! i'm zoe. welcome to my website",
         ..Default::default()
     };
     RawHtml(page.render().into_string())
-}
-
-#[get("/")]
-pub fn home_page() -> RawHtml<String> {
-    HOME_PAGE.to_owned()
 }
 
 fn aboutme() -> Markup {

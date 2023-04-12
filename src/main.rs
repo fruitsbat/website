@@ -13,6 +13,7 @@ pub mod markdown;
 mod migrations;
 pub mod models;
 pub mod page;
+mod robots;
 pub mod schema;
 pub mod style;
 
@@ -38,6 +39,7 @@ fn launch() -> _ {
         font::bold,
         components::tag::tags,
         components::meow::meow,
+        robots::robots
     ];
     rocket::custom(Figment::from(rocket::Config::default()).merge(("port", config::CONFIG.port)))
         .mount("/", routes)

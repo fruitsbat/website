@@ -1,10 +1,12 @@
 use crate::{blog::BlogEntry, page::Page};
+use cached::proc_macro::cached;
 use maud::{html, Markup, Render};
 use rocket::{http::Status, response::content::RawHtml};
 use strum::{EnumIter, IntoEnumIterator};
 
 use super::linkbox::LinkboxContainer;
 
+#[cached]
 #[get("/tag/<link>")]
 pub fn tags(link: String) -> Result<RawHtml<String>, Status> {
     for tag in Tag::iter() {
@@ -20,6 +22,8 @@ pub fn tags(link: String) -> Result<RawHtml<String>, Status> {
                 content: html! {(linkbox_container)},
                 category: crate::page::Category::Blog,
                 title: tag.display_as(),
+                keywords: Some(tag.display_as().into()),
+                description: Some(format!("blogposts tagged with: {}", tag.display_as())),
                 show_tags: true,
                 ..Default::default()
             };
