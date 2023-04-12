@@ -4,7 +4,7 @@ everyone knows **software written in rust is simply superior** to software writt
 
 after all, this means rust is also the best language to create a **personal home page** with.
 
-harnessing the ancient and unknowable powers of [rocket](https://rocket.rs), [diesel](https://diesel.rs/), [maude](https://maud.lambda.xyz/) and **the borrow checker**, this dream has finally become reality!
+harnessing the ancient and unknowable powers of [rocket](https://rocket.rs), [diesel](https://diesel.rs/), [maud](https://maud.lambda.xyz/) and **the borrow checker**, this dream has finally become reality!
 
 
 **it is now better than every other website** (including **yours**) and all of those should also be rewritten in rust as well.
