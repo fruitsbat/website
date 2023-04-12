@@ -77,8 +77,7 @@ impl Render for Page {
             },
         };
 
-        html! {
-            (DOCTYPE)
+        let head = html! {
             head {
                 meta charset="UTF8" {}
                 meta
@@ -94,7 +93,12 @@ impl Render for Page {
                     type="application/atom+xml"
                     href="/index.xml" {}
             }
+        };
+
+        html! {
+            (DOCTYPE)
             html lang=("en") {
+                (head)
                 (header)
                 body {
                     div #content {

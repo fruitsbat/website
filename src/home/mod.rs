@@ -1,13 +1,18 @@
 use crate::{
     assets::Asset,
     blinkies::Blinkybox,
-    components::table::{Row, Table},
+    components::{
+        table::{Row, Table},
+        tag::Tag,
+    },
     markdown::Markdown,
     page::{Category, Page},
 };
 use cached::proc_macro::cached;
+use itertools::join;
 use maud::{html, Markup, Render};
 use rocket::response::content::RawHtml;
+use strum::IntoEnumIterator;
 
 #[cached]
 #[get("/")]
@@ -32,6 +37,8 @@ pub fn home_page() -> RawHtml<String> {
         content,
         category: Category::Home,
         title: "hi! i'm zoe. welcome to my website",
+        description: Some("my (zoe bat) personal blog, where i write about things".into()),
+        keywords: Some(join(Tag::iter().map(|t| t.display_as()), ", ")),
         ..Default::default()
     };
     RawHtml(page.render().into_string())

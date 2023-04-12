@@ -35,7 +35,7 @@ pub fn main_page() -> RawHtml<String> {
         show_tags: true,
         description: Some("a list of all blog entries about various topics".into()),
         // use all tags as keywords
-        keywords: Some(join(Tag::iter().map(|t| t.display_as()), ",")),
+        keywords: Some(join(Tag::iter().map(|t| t.display_as()), ", ")),
         ..Default::default()
     };
     RawHtml(main_page.render().into_string())
@@ -172,7 +172,7 @@ pub fn pages(entry: String) -> Result<RawHtml<String>, Status> {
                     title: post.title(),
                     category: Category::Blog,
                     description: Some(post.description().into()),
-                    keywords: Some(join(post.tags().iter().map(|tag| tag.display_as()), ",")),
+                    keywords: Some(join(post.tags().iter().map(|tag| tag.display_as()), ", ")),
                     meow: Meow::from_blog(&post).ok(),
                     ..Default::default()
                 }
