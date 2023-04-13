@@ -39,6 +39,7 @@ fn launch() -> _ {
         assets::file,
         font::regular,
         font::bold,
+        font::mono,
         components::tag::tags,
         components::meow::meow,
         robots::robots,

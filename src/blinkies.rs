@@ -8,6 +8,8 @@ pub enum Blinkies {
     Trains,
     Abductable,
     Frickinbats,
+    Silly,
+    FirefoxUser,
 }
 
 impl Blinkies {
@@ -15,6 +17,8 @@ impl Blinkies {
         match &self {
             Self::Trains => "https://web.archive.org/web/20220510005638/https://pronoun.is/fae",
             Self::Abductable => "https://memory-alpha.fandom.com/wiki/Baseball?so=search",
+            Self::Silly => "https://youtu.be/32Hp1LW08Yc",
+            Self::FirefoxUser => "https://www.mozilla.org/en-US/firefox/new/",
             Self::Frickinbats => "https://en.wikipedia.org/wiki/Indian_flying_fox#/media/File:Indian_flying_fox_cropped.jpg",
         }
     }
@@ -23,6 +27,8 @@ impl Blinkies {
             Self::Trains => Asset::TrainsBlinkie,
             Self::Abductable => Asset::AbductableBlinkie,
             Self::Frickinbats => Asset::FrickinbatsBlinkie,
+            Self::Silly => Asset::Silly,
+            Self::FirefoxUser => Asset::FirefoxUser,
         }
     }
 }

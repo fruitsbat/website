@@ -49,6 +49,7 @@ pub fn home_page() -> RawHtml<String> {
         description: "my (zoe bat) personal blog, where i write about things".into(),
         keywords: join(Tag::iter().map(|t| t.display_as()), ", "),
         canonical: CONFIG.base_url.clone(),
+        has_code: false,
     };
     RawHtml(page.render().into_string())
 }

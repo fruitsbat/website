@@ -1,7 +1,7 @@
 use crate::components::{footer::Footer, meow::Meow, tag::TagList};
+use cached::proc_macro::cached;
 use maud::{html, Markup, Render, DOCTYPE};
 use strum::EnumIter;
-
 #[derive(PartialEq, EnumIter, Copy, Clone)]
 pub enum Category {
     Home,
@@ -32,6 +32,21 @@ pub struct Page {
     pub keywords: String,
     pub description: String,
     pub canonical: String,
+    pub has_code: bool,
+}
+
+#[cached]
+fn get_highlighting() -> Markup {
+    html! {
+        link
+            rel="stylesheet"
+            href="//unpkg.com/@catppuccin/highlightjs/css/catppuccin-frappe.css"
+            {}
+        script
+            src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"
+            {}
+        script {"hljs.highlightAll();"}
+    }
 }
 
 impl Render for Page {
@@ -58,6 +73,12 @@ impl Render for Page {
                     content=(self.description) {}
         };
 
+        let highlighting = if self.has_code {
+            get_highlighting()
+        } else {
+            html! {}
+        };
+
         let canonical = html! {
             link
             rel="canonical"
@@ -76,6 +97,7 @@ impl Render for Page {
                 link rel="stylesheet" href="/index.css" {}
                 (keywords)
                 (description)
+                (highlighting)
                 (canonical)
                 link
                     rel="alternate"

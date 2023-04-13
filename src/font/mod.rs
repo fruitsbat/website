@@ -9,3 +9,8 @@ pub fn regular() -> (ContentType, &'static [u8]) {
 pub fn bold() -> (ContentType, &'static [u8]) {
     (ContentType::WOFF2, include_bytes!("atkinson_bold.woff2"))
 }
+
+#[get("/assets/fonts/CascadiaCode.woff2")]
+pub fn mono() -> (ContentType, &'static [u8]) {
+    (ContentType::WOFF2, include_bytes!("CascadiaCode.woff2"))
+}

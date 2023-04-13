@@ -27,6 +27,7 @@ pub fn tags(link: String) -> Result<RawHtml<String>, Status> {
                 description: format!("blogposts tagged with: {}", tag.display_as()),
                 show_tags: true,
                 canonical: format!("{}/log", CONFIG.base_url),
+                has_code: false,
             };
             return Ok(RawHtml(page.render().into_string()));
         }
@@ -41,9 +42,21 @@ pub enum Tag {
     Programming,
     Cyberspace,
     Emoji,
+    Tutorial,
+    Atmega32u4,
+    CircuitPlayground,
+    Embedded,
 }
 
 impl Tag {
+    pub fn frontpage_name(&self) -> &'static str {
+        match self {
+            Self::Atmega32u4 => "the atmega32u4",
+            Self::CircuitPlayground => "the circuit playground classic",
+            _ => self.display_as(),
+        }
+    }
+
     pub fn link(&self) -> &'static str {
         match &self {
             Self::ThingsIMade => "things_i_made",
@@ -51,6 +64,10 @@ impl Tag {
             Self::Programming => "programming",
             Self::Emoji => "emoji",
             Self::Rust => "rust",
+            Self::Tutorial => "tutorial",
+            Self::Atmega32u4 => "atmega32u4",
+            Self::CircuitPlayground => "circuit_playground",
+            Self::Embedded => "embedded",
         }
     }
     pub fn display_as(&self) -> &'static str {
@@ -60,6 +77,10 @@ impl Tag {
             Self::Cyberspace => "cyberspace",
             Self::Emoji => "emoji",
             Self::Rust => "rust",
+            Self::Atmega32u4 => "atmega32u4",
+            Self::CircuitPlayground => "circuit playground",
+            Self::Embedded => "embedded programming",
+            Self::Tutorial => "tutorials",
         }
     }
     pub fn category(&self) -> atom_syndication::Category {

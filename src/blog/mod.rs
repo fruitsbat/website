@@ -38,21 +38,31 @@ pub fn main_page() -> RawHtml<String> {
         description: "a list of all blog entries about various topics".into(),
         // use all tags as keywords
         keywords: join(Tag::iter().map(|t| t.display_as()), ", "),
+        has_code: false,
     };
     RawHtml(main_page.render().into_string())
 }
 
 #[derive(EnumIter)]
 pub enum BlogEntry {
+    RustAtmegaTutorial,
     Kaokao,
     RewritingMyWebsiteInRust,
 }
 
 impl BlogEntry {
+    pub fn has_code(&self) -> bool {
+        match self {
+            Self::RustAtmegaTutorial => true,
+            _ => false,
+        }
+    }
+
     pub fn preview_image(&self) -> Option<Asset> {
         match self {
-            Self::RewritingMyWebsiteInRust => None,
             Self::Kaokao => Some(Asset::Kaokao),
+            Self::RustAtmegaTutorial => Some(Asset::Blink),
+            _ => None,
         }
     }
     pub fn tags(&self) -> Vec<Tag> {
@@ -68,6 +78,15 @@ impl BlogEntry {
             Self::Kaokao => {
                 vec![Tag::ThingsIMade, Tag::Emoji, Tag::Programming, Tag::Rust]
             }
+            Self::RustAtmegaTutorial => {
+                vec![
+                    Tag::Rust,
+                    Tag::Atmega32u4,
+                    Tag::CircuitPlayground,
+                    Tag::Tutorial,
+                    Tag::Programming,
+                ]
+            }
         }
     }
     pub fn content(&self) -> Markup {
@@ -76,6 +95,9 @@ impl BlogEntry {
                 Markdown(include_str!("./rewriting_my_website.md")).render()
             }
             Self::Kaokao => Markdown(include_str!("./kaokao.md")).render(),
+            Self::RustAtmegaTutorial => {
+                Markdown(include_str!("building_rust_code_for_atmega32u4.md")).render()
+            }
         }
     }
 
@@ -83,12 +105,16 @@ impl BlogEntry {
         match self {
             Self::RewritingMyWebsiteInRust => "rewriting my website in rust",
             Self::Kaokao => "kaokao",
+            Self::RustAtmegaTutorial => {
+                "how to run rust code on a circuit playground classic / atmega32u4"
+            }
         }
     }
     pub fn slug(&self) -> &'static str {
         match &self {
             Self::RewritingMyWebsiteInRust => "rewriting_my_website_in_rust",
             Self::Kaokao => "kaokao",
+            Self::RustAtmegaTutorial => "rust_atmega32u4_tutorial",
         }
     }
 
@@ -97,6 +123,7 @@ impl BlogEntry {
         let time = match self {
             Self::RewritingMyWebsiteInRust => (2023, 4, 8, 23, 30, 0),
             Self::Kaokao => (2023, 4, 9, 10, 0, 0),
+            Self::RustAtmegaTutorial => (2023, 4, 13, 22, 0, 0),
         };
         FixedOffset::west_opt(2 * hour)
             .unwrap()
@@ -110,6 +137,7 @@ impl BlogEntry {
                 "a reasonable and important thing to do for a personal blog"
             }
             Self::Kaokao => "kaokao is an emoji picker with support for custom and builtin kaomoji",
+            Self::RustAtmegaTutorial => "a guide on how to set up a rust project for the circuit playground classic / atmega32u4"
         }
     }
 
@@ -177,6 +205,7 @@ pub fn pages(entry: String) -> Result<RawHtml<String>, Status> {
                     meow: Meow::from_blog(&post).ok(),
                     canonical: format!("{}/log/{}", CONFIG.base_url, post.slug()),
                     show_tags: false,
+                    has_code: post.has_code(),
                 }
                 .render()
                 .into_string(),
