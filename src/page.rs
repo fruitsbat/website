@@ -88,7 +88,7 @@ impl Render for Page {
 
         let head = html! {
             head {
-                meta charset="UTF8" {}
+                meta charset="utf-8" {}
                 meta
                     name="viewport"
                     content="width=device-width"
