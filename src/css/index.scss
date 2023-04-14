@@ -51,7 +51,7 @@ code {
 
 header {
   padding: var(--padding-size);
-  width: 100vw;
+  width: 100%;
   border-bottom: var(--border-width) solid var(--cyan);
   background: var(--background-color);
 }
@@ -101,7 +101,7 @@ a.active::before {
 }
 
 footer {
-  width: 100vw;
+  width: 100%;
   display: flex;
   position: sticky;
   bottom: 0;
@@ -128,7 +128,6 @@ body {
   padding: var(--padding-size);
   gap: var(--padding-size);
   flex-grow: 5;
-  margin: auto;
 }
 
 html {
