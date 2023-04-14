@@ -6,7 +6,8 @@ if you have a regular atmega32u4 (the microcontroller that powers the cicuit pla
 ## prerequisites
 first you will need to install `gcc-avr` and `avrdude`, but they might be called something else on your distro.
 
-you also need to [install rust](https://www.rust-lang.org/tools/install). if you don't have any experience in that language you should also take a look at [the book](https://doc.rust-lang.org/stable/book/) or [rust by example](https://doc.rust-lang.org/stable/rust-by-example/) if you prefer a more hands on approach.
+[the avr-hal repo](https://github.com/Rahix/avr-hal) lists `sudo apt install avr-libc gcc-avr pkg-config avrdude libudev-dev build-essential` as a way to get all dependencies on ubuntu
+
 
 if you are on nixos like me this shell should work:
 ```nix
@@ -18,6 +19,8 @@ pkgs.mkShell {
   ];
 }
 ```
+
+you also need to [install rust](https://www.rust-lang.org/tools/install). if you don't have any experience in that language you should also take a look at [the book](https://doc.rust-lang.org/stable/book/) or [rust by example](https://doc.rust-lang.org/stable/rust-by-example/) if you prefer a more hands on approach.
 
 ## making the rust project
 to make a new project you run `cargo new <whatever-you-feel-like-naming-your-project>`.
