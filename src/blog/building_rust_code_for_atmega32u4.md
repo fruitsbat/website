@@ -1,5 +1,8 @@
 ![red led on a circuit playground classic blinking](/assets/blink.webp)
 
+this guide will show you how to get a simple hello world blink example working on circuit playground classic.
+if you have a regular atmega32u4 (the microcontroller that powers the cicuit playground) you should also be able to follow along.
+
 ## prerequisites
 first you will need to install `gcc-avr` and `avrdude`, but they might be called something else on your distro.
 

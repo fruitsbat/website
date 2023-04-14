@@ -53,6 +53,7 @@ impl Tag {
         match self {
             Self::Atmega32u4 => "the atmega32u4",
             Self::CircuitPlayground => "the circuit playground classic",
+            Self::Tutorial => "how to do things",
             _ => self.display_as(),
         }
     }
@@ -78,7 +79,7 @@ impl Tag {
             Self::Emoji => "emoji",
             Self::Rust => "rust",
             Self::Atmega32u4 => "atmega32u4",
-            Self::CircuitPlayground => "circuit playground",
+            Self::CircuitPlayground => "circuit playground classic",
             Self::Embedded => "embedded programming",
             Self::Tutorial => "tutorials",
         }
@@ -92,7 +93,7 @@ impl Tag {
     }
     pub fn a(&self) -> Markup {
         html! {a href=(format!("/tag/{}", self.link())){
-            (self.display_as())
+            (self.frontpage_name())
         }}
     }
 }
