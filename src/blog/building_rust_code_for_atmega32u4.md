@@ -198,6 +198,7 @@ this will give you a `.elf` file: `target/atmega32u4/release/<the-name-you-enter
 ## flashing!
 you can now flash this by running
 `avrdude -p m32u4 -c avr109 -P /dev/ttyACM0 -U flash:w:target/atmega32u4/release/name-you-entered.elf -b 9600`
+**this will overwrite anything on your boards flash**
 
 - `m32u4` is your board 
 - `avr109` is the programmer type
