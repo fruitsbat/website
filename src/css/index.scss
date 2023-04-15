@@ -139,3 +139,9 @@ h1::before {
   content: ">";
   color: var(--cyan);
 }
+
+.titletext {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

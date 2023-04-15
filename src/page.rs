@@ -51,14 +51,15 @@ fn get_highlighting() -> Markup {
 
 impl Render for Page {
     fn render(&self) -> Markup {
-        let header = Header {
-            title: self.title,
-            show_tags: self.show_tags,
-        };
-
         let meow = match &self.meow {
             None => html! {},
             Some(meow) => html! {(meow)},
+        };
+
+        let header = Header {
+            title: self.title,
+            show_tags: self.show_tags,
+            meow: meow.clone(),
         };
 
         let keywords = html! {
@@ -115,7 +116,6 @@ impl Render for Page {
                     div #content {
                         (self.content.clone())
                     }
-                    (meow)
                 }
                 (Footer {active: self.category})
             }
@@ -126,6 +126,7 @@ impl Render for Page {
 struct Header {
     title: &'static str,
     show_tags: bool,
+    meow: Markup,
 }
 
 impl Render for Header {
@@ -134,7 +135,7 @@ impl Render for Header {
             html! {
                 details {
                     summary {"show all tags"}
-                    (TagList {})
+                    (TagList::default())
                 }
             }
         } else {
@@ -142,7 +143,10 @@ impl Render for Header {
         };
         html! {
             Header {
-                h1 {(self.title)}
+                div class="titletext" {
+                    h1 {(self.title)}
+                    (self.meow)
+                }
                 nav {(tags)}
             }
         }

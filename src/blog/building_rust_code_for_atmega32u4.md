@@ -1,7 +1,7 @@
 ![red led on a circuit playground classic blinking](/assets/blink.webp)
 
-this guide will show you how to get a simple hello world blink example working on circuit playground classic.
-if you have a regular atmega32u4 (the microcontroller that powers the cicuit playground) you should also be able to follow along.
+this guide will show you how to get a simple **hello world blink example** working on **circuit playground classic**.
+if you have a regular **atmega32u4** (the microcontroller that powers the cicuit playground), or another board based on it you should also be able to follow along.
 
 ## prerequisites
 first you will need to install `gcc-avr` and `avrdude`, but they might be called something else on your distro.
@@ -27,8 +27,8 @@ to make a new project you run `cargo new <whatever-you-feel-like-naming-your-pro
 i creatively named mine `avrtest`.
 
 ### the toolchain
-we need the nightly toolchain since rust doesn't have avr support in stable.
-at the time of writing this (12.4.2023), the newest nightly toolchain doesn't actually work for this!
+we need the **nightly toolchain** since rust doesn't have avr support in stable.
+at the time of writing this (12.4.2023), **the newest nightly toolchain doesn't actually work for this!**
 of course this might change in the future, but right now you need to specify that you want
 `2023-03-24`.
 to do this, run: `rustup override set nightly-2023-03-24`.
@@ -91,7 +91,7 @@ features = [
 ```
 
 ### the target
-rust does not have the atmega32u4 as a builtin target.
+rust does not have the atmega32u4 as a builtin **target**.
 this means we get to have some fun and build our own!
 
 (this is a lie. i have actually stolen mine from [this file](https://raw.githubusercontent.com/Rahix/avr-hal/main/avr-specs/avr-atmega32u4.json))
@@ -123,9 +123,9 @@ this means we get to have some fun and build our own!
 }
 ```
 you should be able to get away with pasting this into a file called `atmega32u4.json`, or whatever else seems sensible to you.
-just make sure to place it at the root of your project directory.
+just make sure to place it **at the root of your project directory**.
 
-we also need to tell rust about this file.
+we also need to **tell rust about this file**.
 to do that make a folder called `.cargo`
 and place a file called `config.toml` inside it.
 that file should look like this:
@@ -191,7 +191,7 @@ fn main() -> ! {
 ## building!
 now it's time to build!
 go to the root of your project and run
-`cargo build --release`. (you should always build in release mode because there is limited processing power and storage)
+`cargo build --release`. (you should always **build in release mode** because there is limited processing power and storage)
 
 this will give you a `.elf` file: `target/atmega32u4/release/<the-name-you-entered>.elf`.
 
@@ -209,4 +209,4 @@ some of those might be different for you, so watch out!
 
 ## gaze upon your creation!
 the red led on your board should now have started blinking!
-congratulations!
+**congratulations**!

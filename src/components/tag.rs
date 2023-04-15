@@ -35,7 +35,7 @@ pub fn tags(link: String) -> Result<RawHtml<String>, Status> {
     Err(Status::NotFound)
 }
 
-#[derive(EnumIter, PartialEq, Clone, FromFormField)]
+#[derive(EnumIter, PartialEq, Clone, FromFormField, Eq)]
 pub enum Tag {
     ThingsIMade,
     Rust,
@@ -109,15 +109,22 @@ impl Render for Tag {
     }
 }
 
-pub struct TagList;
+pub struct TagList(pub Vec<Tag>);
 impl Render for TagList {
     fn render(&self) -> Markup {
         html! {
             div class="tag-list" {
-                @for tag in Tag::iter() {
+                @for tag in &self.0 {
                     (tag)
                 }
             }
         }
+    }
+}
+
+impl Default for TagList {
+    /// all tags
+    fn default() -> Self {
+        Self(Tag::iter().collect::<Vec<Tag>>())
     }
 }

@@ -1,6 +1,6 @@
 use cached::proc_macro::cached;
 use chrono::{DateTime, FixedOffset, TimeZone};
-use itertools::join;
+use itertools::{join, Itertools};
 use maud::{html, Markup, Render};
 use rocket::{http::Status, response::content::RawHtml};
 use strum::{EnumIter, IntoEnumIterator};
@@ -10,7 +10,7 @@ use crate::{
     components::{
         linkbox::{Linkbox, LinkboxContainer},
         meow::Meow,
-        tag::Tag,
+        tag::{Tag, TagList},
     },
     config::CONFIG,
     markdown::Markdown,
@@ -43,7 +43,7 @@ pub fn main_page() -> RawHtml<String> {
     RawHtml(main_page.render().into_string())
 }
 
-#[derive(EnumIter)]
+#[derive(EnumIter, Clone, Copy, Eq, PartialEq)]
 pub enum BlogEntry {
     RustAtmegaTutorial,
     Kaokao,
@@ -85,12 +85,13 @@ impl BlogEntry {
                     Tag::CircuitPlayground,
                     Tag::Tutorial,
                     Tag::Programming,
+                    Tag::Embedded,
                 ]
             }
         }
     }
     pub fn content(&self) -> Markup {
-        match self {
+        let content = match self {
             Self::RewritingMyWebsiteInRust => {
                 Markdown(include_str!("./rewriting_my_website.md")).render()
             }
@@ -98,7 +99,25 @@ impl BlogEntry {
             Self::RustAtmegaTutorial => {
                 Markdown(include_str!("building_rust_code_for_atmega32u4.md")).render()
             }
-        }
+        };
+
+        let linkboxes = LinkboxContainer {
+            linkboxes: self
+                .similar()
+                .iter()
+                .map(|post| post.linkbox())
+                .collect_vec(),
+        };
+
+        let content = html! {
+            (content)
+            hr {}
+            h2 {"more like this:"}
+            (linkboxes)
+            br {}
+            (TagList(self.tags()))
+        };
+        content
     }
 
     pub fn title(&self) -> &'static str {
@@ -176,6 +195,28 @@ impl BlogEntry {
             description: self.description().into(),
             tags: self.tags(),
         }
+    }
+
+    /// sort all other blogposts by similarity
+    pub fn similar(&self) -> Vec<BlogEntry> {
+        Self::iter()
+            .filter(|post| post != self)
+            .map(|entry| {
+                (
+                    entry,
+                    // how many matching tags does this have
+                    entry
+                        .tags()
+                        .iter()
+                        .zip(self.tags().iter())
+                        .filter(|(a, b)| a == b)
+                        .collect::<Vec<(&Tag, &Tag)>>()
+                        .len(),
+                )
+            })
+            .sorted_by(|a, b| Ord::cmp(&a.1, &b.1))
+            .map(|(post, _similarity)| post)
+            .collect::<Vec<BlogEntry>>()
     }
 }
 
