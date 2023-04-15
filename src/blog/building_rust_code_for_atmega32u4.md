@@ -27,7 +27,7 @@ to make a new project you run `cargo new <whatever-you-feel-like-naming-your-pro
 i creatively named mine `avrtest`.
 
 ### the toolchain
-we need the nightly toolchain since rust doesnt have avr support in stable.
+we need the nightly toolchain since rust doesn't have avr support in stable.
 at the time of writing this (12.4.2023), the newest nightly toolchain doesn't actually work for this!
 of course this might change in the future, but right now you need to specify that you want
 `2023-03-24`.
