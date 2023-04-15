@@ -3,6 +3,7 @@ use chrono::{DateTime, FixedOffset, TimeZone};
 use itertools::{join, Itertools};
 use maud::{html, Markup, Render};
 use rocket::{http::Status, response::content::RawHtml};
+use std::collections::HashSet;
 use strum::{EnumIter, IntoEnumIterator};
 
 use crate::{
@@ -65,29 +66,25 @@ impl BlogEntry {
             _ => None,
         }
     }
-    pub fn tags(&self) -> Vec<Tag> {
+    pub fn tags(&self) -> HashSet<Tag> {
         match self {
-            Self::RewritingMyWebsiteInRust => {
-                vec![
-                    Tag::Cyberspace,
-                    Tag::ThingsIMade,
-                    Tag::Programming,
-                    Tag::Rust,
-                ]
-            }
+            Self::RewritingMyWebsiteInRust => HashSet::from([
+                Tag::Cyberspace,
+                Tag::ThingsIMade,
+                Tag::Programming,
+                Tag::Rust,
+            ]),
             Self::Kaokao => {
-                vec![Tag::ThingsIMade, Tag::Emoji, Tag::Programming, Tag::Rust]
+                HashSet::from([Tag::ThingsIMade, Tag::Emoji, Tag::Programming, Tag::Rust])
             }
-            Self::RustAtmegaTutorial => {
-                vec![
-                    Tag::Rust,
-                    Tag::Atmega32u4,
-                    Tag::CircuitPlayground,
-                    Tag::Tutorial,
-                    Tag::Programming,
-                    Tag::Embedded,
-                ]
-            }
+            Self::RustAtmegaTutorial => HashSet::from([
+                Tag::Rust,
+                Tag::Atmega32u4,
+                Tag::CircuitPlayground,
+                Tag::Tutorial,
+                Tag::Programming,
+                Tag::Embedded,
+            ]),
         }
     }
     pub fn content(&self) -> Markup {
@@ -115,7 +112,7 @@ impl BlogEntry {
             h2 {"more like this:"}
             (linkboxes)
             br {}
-            (TagList(self.tags()))
+            (TagList(self.tags().into_iter().collect_vec()))
         };
         content
     }
@@ -193,28 +190,29 @@ impl BlogEntry {
             path: format!("/log/{}", self.slug()),
             image: self.preview_image(),
             description: self.description().into(),
-            tags: self.tags(),
+            tags: self.tags().into_iter().collect_vec(),
         }
     }
 
     /// sort all other blogposts by similarity
     pub fn similar(&self) -> Vec<BlogEntry> {
+        let own_tag_hash = self.tags().into_iter().collect::<HashSet<_>>();
         Self::iter()
             .filter(|post| post != self)
             .map(|entry| {
+                let weight = (100 as usize).div_floor(entry.tags().len());
                 (
                     entry,
-                    // how many matching tags does this have
-                    entry
-                        .tags()
-                        .iter()
-                        .zip(self.tags().iter())
-                        .filter(|(a, b)| a == b)
-                        .collect::<Vec<(&Tag, &Tag)>>()
-                        .len(),
+                    own_tag_hash
+                        .intersection(&entry.tags().into_iter().collect::<HashSet<_>>())
+                        .count()
+                        * weight,
                 )
             })
-            .sorted_by(|a, b| Ord::cmp(&a.1, &b.1))
+            .map(|(post, similarity)| {
+                return (post, similarity);
+            })
+            .sorted_by(|a, b| Ord::cmp(&b.1, &a.1))
             .map(|(post, _similarity)| post)
             .collect::<Vec<BlogEntry>>()
     }

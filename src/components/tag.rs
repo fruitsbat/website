@@ -35,7 +35,7 @@ pub fn tags(link: String) -> Result<RawHtml<String>, Status> {
     Err(Status::NotFound)
 }
 
-#[derive(EnumIter, PartialEq, Clone, FromFormField, Eq)]
+#[derive(EnumIter, PartialEq, Clone, FromFormField, Eq, Hash)]
 pub enum Tag {
     ThingsIMade,
     Rust,

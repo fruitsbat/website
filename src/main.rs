@@ -1,3 +1,5 @@
+#![feature(int_roundings)]
+
 use rocket::figment::Figment;
 
 pub mod assets;
