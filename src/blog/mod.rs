@@ -3,6 +3,7 @@ use chrono::{DateTime, FixedOffset, TimeZone};
 use itertools::{join, Itertools};
 use maud::{html, Markup, Render};
 use rocket::{http::Status, response::content::RawHtml};
+use sitewriter::UrlEntry;
 use std::collections::HashSet;
 use strum::{EnumIter, IntoEnumIterator};
 
@@ -191,6 +192,17 @@ impl BlogEntry {
             image: self.preview_image(),
             description: self.description().into(),
             tags: self.tags().into_iter().collect_vec(),
+        }
+    }
+
+    pub fn url_entry(&self) -> UrlEntry {
+        UrlEntry {
+            loc: format!("{}/log/{}", CONFIG.base_url, self.slug())
+                .parse()
+                .unwrap(),
+            lastmod: Some(self.date().into()),
+            changefreq: None,
+            priority: Some(0.7),
         }
     }
 

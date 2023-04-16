@@ -46,6 +46,7 @@ fn launch() -> _ {
         components::meow::meow,
         robots::robots,
         verification::google,
+        sitemap::sitemap,
     ];
     rocket::custom(Figment::from(rocket::Config::default()).merge(("port", config::CONFIG.port)))
         .mount("/", routes)
