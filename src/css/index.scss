@@ -145,3 +145,8 @@ h1::before {
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
+hr {
+  border: calc(var(--border-width) / 2) solid var(--cyan);
+  border-radius: var(--radius);
+}
