@@ -13,6 +13,7 @@ pub enum Asset {
     FirefoxUser,
     Silly,
     Blink,
+    Fedivision2023,
 }
 
 impl Asset {
@@ -26,6 +27,7 @@ impl Asset {
             Self::FirefoxUser => "firefoxuser.gif",
             Self::Silly => "getsilly.gif",
             Self::Blink => "blink.webp",
+            Self::Fedivision2023 => "z-type-ultra-ost_howells-theme.mp3",
         }
     }
 
@@ -35,6 +37,7 @@ impl Asset {
             Self::FirefoxUser => ContentType::GIF,
             Self::Silly => ContentType::GIF,
             Self::Me => ContentType::JPEG,
+            Self::Fedivision2023 => ContentType::MP3,
             _ => ContentType::Any,
         }
     }
@@ -49,6 +52,7 @@ impl Asset {
             Self::FirefoxUser => include_bytes!("blinkies/firefoxuser.gif"),
             Self::Silly => include_bytes!("blinkies/getsilly.gif"),
             Self::Blink => include_bytes!("images/blink.webp"),
+            Self::Fedivision2023 => include_bytes!("music/fedivision2023.mp3"),
         }
     }
 
@@ -64,6 +68,7 @@ impl Asset {
                 "a gif example showing off kaokao, an emoji is being selected from a big list"
             }
             Self::Blink => "the red led on a circuit playground blinking rythmically",
+            Self::Fedivision2023 => "a jungle song with some beeps and boops in it",
         }
     }
 }
