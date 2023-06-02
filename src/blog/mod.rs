@@ -108,8 +108,9 @@ impl BlogEntry {
         };
 
         let content = html! {
-            (content)
-            hr {}
+            div class="blogpost" {
+                (content)
+            }
             h2 {"more like this:"}
             (linkboxes)
             br {}

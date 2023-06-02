@@ -1,17 +1,39 @@
+@import "./glow.scss";
+@import "./grow.scss";
+
+.outer-linkbox {
+  @include glow;
+  padding: var(--padding-size);
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-size);
+  background-color: var(--surface-color);
+  border-radius: var(--radius);
+}
+
 .linkbox {
+  @include hover-glow;
+  @include grow;
+  background-color: var(--alt-surface-color);
+  text-decoration: none;
   display: flex;
   flex-direction: column;
   justify-content: stretch;
-  border: var(--border-width) solid var(--cyan);
+  border: 0 solid var(--cyan);
   padding: var(--padding-size);
   border-radius: var(--radius);
+  &:hover {
+    text-decoration: none;
+  }
   legend {
+    background-color: var(--surface-color);
     border-radius: var(--radius);
-    border: var(--border-width) solid var(--cyan);
+    border: 0 solid var(--cyan);
     align-self: right;
     margin-left: var(--padding-size);
     margin-right: calc(var(--padding-size) * 2);
     padding: var(--padding-size);
+    @include glow;
   }
 }
 
@@ -32,8 +54,6 @@
 .linkbox-container img {
   width: 100%;
   object-fit: contain;
-  border: var(--border-width) solid var(--cyan);
-  padding: var(--padding-size);
   border-radius: var(--radius);
 }
 

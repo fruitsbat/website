@@ -1,30 +1,23 @@
+@import "./grow.scss";
+@import "./glow.scss";
+
 .meowbutton {
+  @include hover-glow;
+  @include grow;
   display: flex;
   text-decoration: none;
   align-content: center;
+  border-radius: var(--radius);
 }
 
 .meowbutton:hover {
   text-decoration: none;
 }
 
-.meowbutton:hover .meownumber {
-  border-left: var(--border-width) solid var(--green);
-  border-bottom: var(--border-width) solid var(--green);
-  border-top: var(--border-width) solid var(--green);
-}
-
-.meowbutton:hover .meowbutton-text {
-  border: var(--border-width) solid var(--green);
-}
-
 .meownumber {
   background: var(--background-color);
   border-top-left-radius: var(--radius);
   border-bottom-left-radius: var(--radius);
-  border-left: var(--border-width) solid var(--cyan);
-  border-bottom: var(--border-width) solid var(--cyan);
-  border-top: var(--border-width) solid var(--cyan);
   padding: calc(var(--padding-size) * 0.5);
   display: flex;
   align-items: center;
@@ -34,9 +27,9 @@
 .meowbutton-text {
   border-top-right-radius: var(--radius);
   border-bottom-right-radius: var(--radius);
-  border: var(--border-width) solid var(--cyan);
   padding: calc(var(--padding-size) * 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--alt-surface-color);
 }

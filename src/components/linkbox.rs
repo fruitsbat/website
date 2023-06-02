@@ -39,18 +39,19 @@ impl Render for Linkbox {
             },
         };
         html! {
-            fieldset role="presentation" class="linkbox" {
-                legend {h2 {a href=(self.path) {(self.legend)}}}
-                div {
-                    p {(self.description)}
-                    (image)
-                    div class="tag-list" {
-                        @for tag in self.tags.iter() {
-                            (tag)
-                        }
-                    }
+        div class="outer-linkbox" {
+        a href=(self.path) class="linkbox" {
+                h2 {(self.legend)}
+                p {(self.description)}
+                (image)
+            }
+            div class="tag-list" {
+                @for tag in self.tags.iter() {
+                    (tag)
                 }
             }
+            }
+
         }
     }
 }

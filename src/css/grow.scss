@@ -1,0 +1,6 @@
+@mixin grow {
+  transition: all 0.24s ease-in-out;
+  &:hover {
+    transform: scale(0.96);
+  }
+}
