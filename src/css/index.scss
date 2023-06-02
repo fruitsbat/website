@@ -21,7 +21,7 @@ pre {
   border: var(--border-width) solid var(--cyan);
   white-space: pre-wrap;
   padding: var(--padding-size);
-  border-radius: var(--radius);
+  border-radius: var(--inner-radius);
   overflow: auto;
   background: var(--code-background-color);
 }
@@ -34,7 +34,7 @@ pre code {
 code {
   font-family: "cascadia", monospace;
   border: var(--border-width) solid var(--cyan);
-  border-radius: var(--radius);
+  border-radius: var(--inner-radius);
   padding: calc(var(--padding-size) / 4);
   background: var(--background-color-dark);
   color: var(--foreground-color-light);
@@ -59,7 +59,7 @@ header {
 
 img {
   width: 100%;
-  border-radius: var(--radius);
+  border-radius: var(--inner-radius);
 }
 
 .blinkybox a img {
@@ -145,7 +145,7 @@ html {
 }
 
 h1::before {
-  content: ">";
+  content: "> ";
   color: var(--cyan);
 }
 
@@ -158,4 +158,8 @@ h1::before {
 hr {
   border: calc(var(--border-width) / 2) solid var(--cyan);
   border-radius: var(--radius);
+}
+
+ul {
+  padding-left: var(--padding-size);
 }

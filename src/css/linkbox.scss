@@ -21,7 +21,7 @@
   justify-content: stretch;
   border: 0 solid var(--cyan);
   padding: var(--padding-size);
-  border-radius: var(--radius);
+  border-radius: calc(var(--radius) - var(--padding-size));
   &:hover {
     text-decoration: none;
   }
@@ -45,6 +45,11 @@
   gap: var(--padding-size);
 }
 
+.linkbox h2::before {
+  content: "> ";
+  color: var(--pink);
+}
+
 .linkbox-container {
   display: grid;
   gap: var(--padding-size);
@@ -54,7 +59,7 @@
 .linkbox-container img {
   width: 100%;
   object-fit: contain;
-  border-radius: var(--radius);
+  border-radius: calc(var(--inner-radius) - var(--padding-size));
 }
 
 @media screen and (max-width: 540px) {

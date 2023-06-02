@@ -12,7 +12,7 @@ use crate::{
     components::{
         linkbox::{Linkbox, LinkboxContainer},
         meow::Meow,
-        tag::{Tag, TagList},
+        tag::Tag,
     },
     config::CONFIG,
     markdown::Markdown,
@@ -113,8 +113,6 @@ impl BlogEntry {
             }
             h2 {"more like this:"}
             (linkboxes)
-            br {}
-            (TagList(self.tags().into_iter().collect_vec()))
         };
         content
     }
