@@ -1,11 +1,11 @@
+@mixin glow {
+  box-shadow: 0 0 calc(var(--padding-size) / 3) var(--cyan-subtle);
+}
+
 @mixin hover-glow {
-  filter: drop-shadow(0 0 0.74em var(--cyan-subtle));
+  @include glow;
   &:hover {
     filter: drop-shadow(-0.24em -0.24em 1em var(--cyan-subtle))
       drop-shadow(0.24em 0.24em 1em var(--pink-subtle));
   }
-}
-
-@mixin glow {
-  box-shadow: 0 0 0.74em var(--cyan-subtle);
 }

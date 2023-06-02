@@ -106,7 +106,7 @@ fn aboutme() -> Markup {
             },
             Row {
                 key: "loves",
-                value: Markdown("[their girlfriend](https://tess.kittycat.homes)").render(),
+                value: Markdown("[their girlfriend](https://lotte.kittycat.homes)").render(),
             },
             Row {
                 key: "trans",
