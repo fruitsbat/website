@@ -1,4 +1,6 @@
 .meowbutton {
+  margin-top: auto;
+  margin-bottom: auto;
   display: flex;
   text-decoration: none;
   align-content: center;
@@ -13,7 +15,7 @@
   background: var(--background-color);
   border-top-left-radius: var(--inner-radius);
   border-bottom-left-radius: var(--inner-radius);
-  padding: calc(var(--padding-size) * 0.5);
+  padding: var(--small-padding);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,7 +24,7 @@
 .meowbutton-text {
   border-top-right-radius: var(--inner-radius);
   border-bottom-right-radius: var(--inner-radius);
-  padding: calc(var(--padding-size) * 0.5);
+  padding: var(--small-padding);
   display: flex;
   align-items: center;
   justify-content: center;

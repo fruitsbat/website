@@ -4,4 +4,5 @@
   --radius: 2em;
   --inner-radius: calc(var(--radius) - var(--padding-size));
   --blur: 1em;
+  --small-padding: calc(var(--padding-size) / 3);
 }

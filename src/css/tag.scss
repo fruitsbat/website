@@ -3,7 +3,7 @@
 .tag {
   @include colored-before;
   border-radius: var(--inner-radius);
-  padding: calc(var(--padding-size) / 2);
+  padding: var(--small-padding);
   display: inline-block;
   background-color: var(--alt-surface-color);
   text-decoration: none;

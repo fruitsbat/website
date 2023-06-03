@@ -90,17 +90,20 @@ a:hover {
   text-decoration-thickness: var(--border-width);
 }
 
-a.active:hover::before {
-  content: ">";
-  color: var(--green);
+.footer-button:hover {
+  text-decoration: none;
+  background-color: var(--hover-color);
 }
 
-a.active::before {
-  content: ">";
-  color: var(--cyan);
+.footer-button {
+  text-decoration: none;
+  background-color: var(--alt-surface-color);
+  border-radius: var(--inner-radius);
+  padding: var(--small-padding);
 }
 
 footer {
+  padding: var(--padding-size);
   width: 100%;
   display: flex;
   position: sticky;
@@ -112,6 +115,10 @@ footer {
 
 .footer-button {
   display: flex;
+}
+
+.footer-button.active {
+  background-color: var(--hover-color);
 }
 
 @keyframes gradientmove {
