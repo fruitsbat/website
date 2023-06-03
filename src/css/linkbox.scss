@@ -5,6 +5,9 @@
   gap: var(--padding-size);
   background-color: var(--surface-color);
   border-radius: var(--radius);
+  background-size: 10rem 10rem;
+  background-image: radial-gradient(circle, var(--pink) 1rem, transparent 2rem),
+    var;
 }
 
 .linkbox {
