@@ -96,6 +96,7 @@ impl Render for Page {
                     initial-scale="1.0" {}
                 title {(self.title)}
                 link rel="stylesheet" href="/index.css" {}
+                link rel="shortcut icon" href="/assets/favicon.svg" {}
                 (keywords)
                 (description)
                 (highlighting)

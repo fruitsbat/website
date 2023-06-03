@@ -14,6 +14,7 @@ pub enum Asset {
     Silly,
     Blink,
     Fedivision2023,
+    Favicon,
 }
 
 impl Asset {
@@ -28,6 +29,7 @@ impl Asset {
             Self::Silly => "getsilly.gif",
             Self::Blink => "blink.webp",
             Self::Fedivision2023 => "z-type-ultra-ost_howells-theme.mp3",
+            Self::Favicon => "favicon.svg",
         }
     }
 
@@ -38,6 +40,7 @@ impl Asset {
             Self::Silly => ContentType::GIF,
             Self::Me => ContentType::JPEG,
             Self::Fedivision2023 => ContentType::MP3,
+            Self::Favicon => ContentType::SVG,
             _ => ContentType::Any,
         }
     }
@@ -53,6 +56,7 @@ impl Asset {
             Self::Silly => include_bytes!("blinkies/getsilly.gif"),
             Self::Blink => include_bytes!("images/blink.webp"),
             Self::Fedivision2023 => include_bytes!("music/fedivision2023.mp3"),
+            Self::Favicon => include_bytes!("favicon.svg"),
         }
     }
 
@@ -69,6 +73,7 @@ impl Asset {
             }
             Self::Blink => "the red led on a circuit playground blinking rythmically",
             Self::Fedivision2023 => "a jungle song with some beeps and boops in it",
+            Self::Favicon => "a mutant standard bat emoji",
         }
     }
 }
