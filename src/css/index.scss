@@ -55,6 +55,7 @@ header {
   padding: var(--padding-size);
   width: 100%;
   background: var(--surface-color);
+  backdrop-filter: blur(var(--blur));
 }
 
 img {
@@ -111,6 +112,7 @@ footer {
   left: 0;
   justify-content: space-evenly;
   background: var(--surface-color);
+  backdrop-filter: blur(var(--blur));
 }
 
 .footer-button {
@@ -124,10 +126,10 @@ footer {
 
 body {
   display: flex;
-  min-height: 100dvh;
+  min-height: 100lvh;
   flex-direction: column;
   background-repeat: no-repeat;
-  background-size: 100dvw 100dvh;
+  background-size: 100lvw 100lvh;
   justify-content: space-between;
   background: linear-gradient(
     135deg,
