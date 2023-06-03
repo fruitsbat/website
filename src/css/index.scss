@@ -126,10 +126,10 @@ footer {
 
 body {
   display: flex;
-  min-height: 100lvh;
+  min-height: 100vh;
   flex-direction: column;
   background-repeat: no-repeat;
-  background-size: 100lvw 100lvh;
+  background-size: auto auto;
   justify-content: space-between;
   background: linear-gradient(
     135deg,
