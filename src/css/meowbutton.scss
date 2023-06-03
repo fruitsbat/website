@@ -16,8 +16,8 @@
 
 .meownumber {
   background: var(--background-color);
-  border-top-left-radius: var(--radius);
-  border-bottom-left-radius: var(--radius);
+  border-top-left-radius: var(--inner-radius);
+  border-bottom-left-radius: var(--inner-radius);
   padding: calc(var(--padding-size) * 0.5);
   display: flex;
   align-items: center;
@@ -25,8 +25,8 @@
 }
 
 .meowbutton-text {
-  border-top-right-radius: var(--radius);
-  border-bottom-right-radius: var(--radius);
+  border-top-right-radius: var(--inner-radius);
+  border-bottom-right-radius: var(--inner-radius);
   padding: calc(var(--padding-size) * 0.5);
   display: flex;
   align-items: center;
