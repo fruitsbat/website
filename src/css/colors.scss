@@ -1,28 +1,138 @@
 :root {
+  --hover-color: #626880;
   --code-background-color: #303446;
-  --alt-surface-color: #414559aa;
-  --surface-color: #303446aa;
+  --alt-surface-color: #414559;
+  --surface-color: #303446;
   --background-color: #232634;
   --foreground-color: #c6d0f5;
   --green: #a6d189;
-  --cyan-subtle: #81c8be2f;
+  --cyan-subtle: #81c8be88;
   --cyan: #81c8be;
   --mauve: #ca9ee6;
-  --pink-subtle: #f4b8e42f;
+  --pink-subtle: #f4b8e488;
   --pink: #f4b8e4;
+  --red: #e78284;
+  --sapphire: #85c1dc;
+  --yellow: #e5c890;
+  --rosewater: #f2d5cf;
+  --flamingo: #eebebe;
+  --mauve: #ca9ee6;
+  --maroon: #ea999c;
+  --peach: #ef9f76;
+  --teal: #81c8be;
+  --sky: #99d1db;
+  --blue: #8caaee;
+  --lavender: #babbf1;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    --pink-subtle: #ea76cb2f;
+    --hover-color: #acb0be;
     --pink: #ea76cb;
-    --alt-surface-color: #ccd0daaa;
-    --surface-color: #eff1f5aa;
+    --alt-surface-color: #ccd0da;
+    --surface-color: #eff1f5;
     --background-color: #dce0e8;
     --foreground-color: #4c4f69;
     --green: #40a02b;
-    --cyan-subtle: #1792992f;
     --cyan: #179299;
     --mauve: #8839ef;
+    --red: #d20f39;
+    --yellow: #df8e1d;
+    --sapphire: #209fb5;
+    --rosewater: #f2d5cf;
+    --flamingo: #eebebe;
+    --red: #e78284;
+    --maroon: #ea999c;
+    --peach: #ef9f76;
+    --teal: #81c8be;
+    --sky: #99d1db;
+    --blue: #8caaee;
+    --lavender: #babbf1;
+  }
+}
+
+@mixin colored-before {
+  &.red {
+    &:before {
+      color: var(--red);
+    }
+  }
+
+  &.rosewatwer {
+    &:before {
+      color: var(--rosewater);
+    }
+  }
+
+  &.flamingo {
+    &:before {
+      color: var(--flamingo);
+    }
+  }
+
+  &.pink {
+    &:before {
+      color: var(--pink);
+    }
+  }
+
+  &.mauve {
+    &:before {
+      color: var(--mauve);
+    }
+  }
+
+  &.maroon {
+    &:before {
+      color: var(--maroon);
+    }
+  }
+
+  &.peach {
+    &:before {
+      color: var(--peach);
+    }
+  }
+
+  &.yellow {
+    &:before {
+      color: var(--yellow);
+    }
+  }
+
+  &.green {
+    &:before {
+      color: var(--green);
+    }
+  }
+
+  &.teal {
+    &:before {
+      color: var(--teal);
+    }
+  }
+
+  &.sky {
+    &:before {
+      color: var(--sky);
+    }
+  }
+
+  &.sapphire {
+    &:before {
+      color: var(--sapphire);
+    }
+  }
+
+  &.blue {
+    &:before {
+      color: var(--blue);
+    }
+  }
+
+  &.lavender {
+    &:before {
+      color: var(--lavender);
+    }
   }
 }

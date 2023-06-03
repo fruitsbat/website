@@ -1,8 +1,4 @@
-@import "./glow.scss";
-@import "./grow.scss";
-
 .outer-linkbox {
-  @include glow;
   padding: var(--padding-size);
   display: flex;
   flex-direction: column;
@@ -12,8 +8,6 @@
 }
 
 .linkbox {
-  @include hover-glow;
-  @include grow;
   background-color: var(--alt-surface-color);
   text-decoration: none;
   display: flex;
@@ -24,6 +18,7 @@
   border-radius: calc(var(--radius) - var(--padding-size));
   &:hover {
     text-decoration: none;
+    background-color: var(--hover-color);
   }
   legend {
     background-color: var(--surface-color);
@@ -33,7 +28,6 @@
     margin-left: var(--padding-size);
     margin-right: calc(var(--padding-size) * 2);
     padding: var(--padding-size);
-    @include glow;
   }
 }
 
@@ -48,6 +42,10 @@
 .linkbox h2::before {
   content: "> ";
   color: var(--pink);
+}
+
+.linkbox:hover h2::before {
+  color: var(--foreground-color);
 }
 
 .linkbox-container {

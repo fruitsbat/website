@@ -96,6 +96,19 @@ impl Tag {
             (self.frontpage_name())
         }}
     }
+    pub fn color(&self) -> &'static str {
+        match &self {
+            Self::ThingsIMade => "yellow",
+            Self::Rust => "red",
+            Self::Programming => "green",
+            Self::Cyberspace => "teal",
+            Self::Emoji => "yellow",
+            Self::Tutorial => "blue",
+            Self::Atmega32u4 => "teal",
+            Self::CircuitPlayground => "peach",
+            Self::Embedded => "green",
+        }
+    }
 }
 
 impl Render for Tag {
@@ -103,7 +116,7 @@ impl Render for Tag {
         let link = format!("/tag/{}", self.link());
         html! {
         a
-        class="tag"
+        class=(format!("tag {}", self.color()))
         href=(link)
         {(self.display_as())}}
     }

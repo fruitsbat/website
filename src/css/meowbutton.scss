@@ -1,9 +1,4 @@
-@import "./grow.scss";
-@import "./glow.scss";
-
 .meowbutton {
-  @include hover-glow;
-  @include grow;
   display: flex;
   text-decoration: none;
   align-content: center;
@@ -32,4 +27,13 @@
   align-items: center;
   justify-content: center;
   background-color: var(--alt-surface-color);
+}
+
+.meowbutton:hover {
+  .meowbutton-text {
+    background-color: var(--hover-color);
+  }
+  .meownumber {
+    background-color: var(--alt-surface-color);
+  }
 }

@@ -5,7 +5,6 @@
 @import "./tag.scss";
 @import "./meowbutton.scss";
 @import "./aboutme.scss";
-@import "./glow.scss";
 
 * {
   padding: 0;
@@ -51,11 +50,9 @@ code {
 }
 
 header {
-  @include glow;
   padding: var(--padding-size);
   width: 100%;
   background: var(--surface-color);
-  backdrop-filter: blur(var(--blur));
 }
 
 img {
@@ -104,7 +101,6 @@ a.active::before {
 }
 
 footer {
-  @include glow;
   width: 100%;
   display: flex;
   position: sticky;
@@ -112,7 +108,6 @@ footer {
   left: 0;
   justify-content: space-evenly;
   background: var(--surface-color);
-  backdrop-filter: blur(var(--blur));
 }
 
 .footer-button {
@@ -129,16 +124,6 @@ body {
   min-height: 100vh;
   flex-direction: column;
   background-repeat: no-repeat;
-  background-size: auto auto;
-  justify-content: space-between;
-  background: linear-gradient(
-    135deg,
-    var(--cyan-subtle) 0%,
-    transparent 25%,
-    transparent 75%,
-    var(--pink-subtle) 100%
-  );
-  background-attachment: fixed;
 }
 
 #content {
@@ -152,7 +137,6 @@ body {
   background-color: var(--surface-color);
   border-radius: var(--radius);
   padding: var(--padding-size);
-  @include glow;
 }
 
 html {
